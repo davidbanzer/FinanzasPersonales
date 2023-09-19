@@ -1,6 +1,8 @@
 using FinanzasPersonales.Application.Common.Interface.Authentication;
+using FinanzasPersonales.Application.Common.Interfaces.Persistance;
 using FinanzasPersonales.Application.Common.Interfaces.Services;
 using FinanzasPersonales.Infrastructure.Authentication;
+using FinanzasPersonales.Infrastructure.Persistance;
 using FinanzasPersonales.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,7 @@ public static class DependencyInjection
     services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
     services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
     services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+    services.AddScoped<IUserRepository, userRepository>();
     return services;
   }
 }
