@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using FinanzasPersonales.Contracts.Authentication;
 using FinanzasPersonales.Application.Services.Authentication;
+using FinanzasPersonales.Application.Services.Authentication.Commands;
+using FinanzasPersonales.Application.Services.Authentication.Queries;
 
 namespace FinanzasPersonales.Api.Controllers;
 
@@ -8,16 +10,20 @@ namespace FinanzasPersonales.Api.Controllers;
 [Route("auth")]
 public class AuthenticationController : ControllerBase
 {
-  public AuthenticationController(IAuthenticationService authenticationService)
-  {
-    _authenticationService = authenticationService;
-  }
-  private readonly IAuthenticationService _authenticationService;
+    public AuthenticationController(
+      IAuthenticationCommandService authenticationCommandService, 
+      IAuthenticationQueryService authenticationQueryService)
+    {
+        _authenticationCommandService = authenticationCommandService;
+        _authenticationQueryService = authenticationQueryService;
+    }
+    private readonly IAuthenticationCommandService _authenticationCommandService;
+  private readonly IAuthenticationQueryService _authenticationQueryService;
   [HttpPost("register")]
 
   public IActionResult Register(RegisterRequest request)
   {
-    var authResult = _authenticationService.Register(
+    var authResult = _authenticationCommandService.Register(
       request.FirstName,
       request.LastName,
       request.Email,
@@ -38,7 +44,7 @@ public class AuthenticationController : ControllerBase
   [HttpPost("login")]
   public IActionResult Login(LoginRequest request)
   {
-    var authResult = _authenticationService.Login(
+    var authResult = _authenticationQueryService.Login(
       request.Email,
       request.Password
     );
