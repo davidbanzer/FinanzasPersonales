@@ -1,5 +1,6 @@
-using FinanzasPersonales.Application.Services.Authentication.Commands;
-using FinanzasPersonales.Application.Services.Authentication.Queries;
+
+using System.Reflection;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FinanzasPersonales.Application;
@@ -8,10 +9,8 @@ public static class DependencyInjection
 {
   public static IServiceCollection AddApplication(this IServiceCollection services)
   {
-        services.AddScoped<IAuthenticationCommandService, AuthenticationCommandService>();
-        services.AddScoped<IAuthenticationQueryService, AuthenticationQueryService>();
-
-        return services;
+    services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+    return services;
 
   }
 }

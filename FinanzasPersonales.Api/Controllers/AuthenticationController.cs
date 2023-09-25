@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using FinanzasPersonales.Contracts.Authentication;
-using FinanzasPersonales.Application.Services.Authentication;
-using FinanzasPersonales.Application.Services.Authentication.Commands;
-using FinanzasPersonales.Application.Services.Authentication.Queries;
+using MediatR;
+using FinanzasPersonales.Application.Authentication.Commands.Register;
+using FinanzasPersonales.Application.Authentication.Common;
+using FinanzasPersonales.Application.Authentication.Queries.Login;
 
 namespace FinanzasPersonales.Api.Controllers;
 
@@ -10,25 +11,25 @@ namespace FinanzasPersonales.Api.Controllers;
 [Route("auth")]
 public class AuthenticationController : ControllerBase
 {
-    public AuthenticationController(
-      IAuthenticationCommandService authenticationCommandService, 
-      IAuthenticationQueryService authenticationQueryService)
-    {
-        _authenticationCommandService = authenticationCommandService;
-        _authenticationQueryService = authenticationQueryService;
-    }
-    private readonly IAuthenticationCommandService _authenticationCommandService;
-  private readonly IAuthenticationQueryService _authenticationQueryService;
+  private readonly ISender _mediator;
+  
+  public AuthenticationController(ISender mediator)
+  {
+    _mediator = mediator;
+  }
+
   [HttpPost("register")]
 
-  public IActionResult Register(RegisterRequest request)
+  public async Task<IActionResult> Register(RegisterRequest request)
   {
-    var authResult = _authenticationCommandService.Register(
+    var command = new RegisterCommand(
       request.FirstName,
       request.LastName,
       request.Email,
       request.Password
     );
+    
+    var authResult = await _mediator.Send(command);
 
     var response = new AuthenticationResponse(
       authResult.User.Id,
@@ -37,17 +38,18 @@ public class AuthenticationController : ControllerBase
       authResult.User.Email,
       authResult.Token
     );
-    
+
     return Ok(response);
   }
 
   [HttpPost("login")]
-  public IActionResult Login(LoginRequest request)
+  public async Task<IActionResult> Login(LoginRequest request)
   {
-    var authResult = _authenticationQueryService.Login(
+    var query = new LoginQuery(
       request.Email,
       request.Password
     );
+    var authResult = await _mediator.Send(query);
 
     var response = new AuthenticationResponse(
       authResult.User.Id,
