@@ -19,6 +19,8 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, Authentic
 
     public async Task<AuthenticationResult> Handle(RegisterCommand command, CancellationToken cancellationToken)
     {
+        await Task.CompletedTask;
+        
         if (_userRepository.GetUserByEmail(command.Email) is not null)
         {
             throw new Exception("El usuario ya existe");
