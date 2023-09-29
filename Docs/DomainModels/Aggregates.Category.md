@@ -12,9 +12,9 @@ class Category {
 
 ```json
 {
-    "id": "6B29FC40-CA47-1067-B31D-00DD010662DA",
-    "userId": "6B29FC40-CA47-1067-B31D-00DD010662DA",
+    "id": {"value":"6B29FC40-CA47-1067-B31D-00DD010662DA"},
     "name": "My Category",
     "description": "My Category Description",
+    "userId": {"value": "6B29FC40-CA47-1067-B31D-00DD010662DA"},
 }
 ```

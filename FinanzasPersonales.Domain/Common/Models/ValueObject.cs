@@ -31,7 +31,7 @@ public abstract class ValueObject : IEquatable<ValueObject>
   public override int GetHashCode()
   {
     return GetEqualityComponents()
-      .Select(x => x?.getHashCode() ?? 0)
+      .Select(x => x?.GetHashCode() ?? 0)
       .Aggregate((x, y) => x ^ y);
   }
 
@@ -39,20 +39,4 @@ public abstract class ValueObject : IEquatable<ValueObject>
   {
     return Equals((object?)other);
   }
-}
-
-
-public class Ammount : ValueObject
-{
-    public decimal Value { get; set; }
-
-    public Ammount(decimal value)
-    {
-        Value = value;
-    }
-
-    public override IEnumerable<object> GetEqualityComponents()
-    {
-        yield return Value;
-    }
 }
