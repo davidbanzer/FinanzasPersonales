@@ -44,6 +44,11 @@ public sealed class Account : AggregateRoot<AccountId>
             userId
         );
     }
+
+    public void AddMovement(MovementId movementId)
+    {
+        _movementsIds.Add(movementId);
+    }
     
     
 }
