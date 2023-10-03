@@ -1,7 +1,7 @@
 using FinanzasPersonales.Application.Authentication.Common;
 using FinanzasPersonales.Application.Common.Interface.Authentication;
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
-using FinanzasPersonales.Domain.Entities;
+using FinanzasPersonales.Domain.User;
 using MediatR;
 
 namespace FinanzasPersonales.Application.Authentication.Commands.Register;
@@ -26,13 +26,12 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, Authentic
             throw new Exception("El usuario ya existe");
         }
         // Crear el usuario (generar id unico) e insertar en la db
-        var user = new User
-        {
-            FirstName = command.FirstName,
-            LastName = command.LastName,
-            Email = command.Email,
-            Password = command.Password
-        };
+        var user = User.Create(
+            command.FirstName,
+            command.LastName,
+            command.Email,
+            command.Password
+        );
 
         _userRepository.Add(user);
         // crear el JWT token

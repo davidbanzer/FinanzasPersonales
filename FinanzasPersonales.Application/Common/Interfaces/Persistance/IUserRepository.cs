@@ -1,4 +1,5 @@
-using FinanzasPersonales.Domain.Entities;
+
+using FinanzasPersonales.Domain.User;
 
 namespace FinanzasPersonales.Application.Common.Interfaces.Persistance;
 

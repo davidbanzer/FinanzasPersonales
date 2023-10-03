@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using FinanzasPersonales.Application.Common.Interface.Authentication;
 using FinanzasPersonales.Application.Common.Interfaces.Services;
-using FinanzasPersonales.Domain.Entities;
+using FinanzasPersonales.Domain.User;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -29,7 +29,7 @@ public class JwtTokenGenerator : IJwtTokenGenerator
 
     var claims = new[]
     {
-        new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+        new Claim(JwtRegisteredClaimNames.Sub, user.Id.Value.ToString()),
         new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName),
         new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName),
         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),

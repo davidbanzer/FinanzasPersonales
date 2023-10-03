@@ -7,22 +7,22 @@ namespace FinanzasPersonales.Domain.User;
 
 public sealed class User : AggregateRoot<UserId>
 {
-    private readonly List<AccountId> _accountsIds = new();
-    private readonly List<CategoryId> _categoriesIds = new();
+/*     private readonly List<AccountId> _accountsIds = new();
+    private readonly List<CategoryId> _categoriesIds = new(); */
     public string FirstName { get; }
     public string LastName { get; }
     public string Email { get; }
-    public Password Password { get; }
+    public string Password { get; }
     
-    public IReadOnlyCollection<AccountId> Accounts => _accountsIds.AsReadOnly();
-    public IReadOnlyCollection<CategoryId> Categories => _categoriesIds.AsReadOnly();
+  /*   public IReadOnlyCollection<AccountId> Accounts => _accountsIds.AsReadOnly();
+    public IReadOnlyCollection<CategoryId> Categories => _categoriesIds.AsReadOnly(); */
 
     private User(
         UserId userId,
         string firstName,
         string lastName,
         string email,
-        Password password
+        string password
     ) : base(userId)
     {
         Id = userId;
@@ -36,7 +36,7 @@ public sealed class User : AggregateRoot<UserId>
         string firstName,
         string lastName,
         string email,
-        Password password
+        string password
     )
     {
         return new(

@@ -1,7 +1,7 @@
 using FinanzasPersonales.Application.Authentication.Common;
 using FinanzasPersonales.Application.Common.Interface.Authentication;
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
-using FinanzasPersonales.Domain.Entities;
+using FinanzasPersonales.Domain.User;
 using MediatR;
 
 namespace FinanzasPersonales.Application.Authentication.Queries.Login;

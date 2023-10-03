@@ -1,5 +1,5 @@
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
-using FinanzasPersonales.Domain.Entities;
+using FinanzasPersonales.Domain.User;
 
 namespace FinanzasPersonales.Infrastructure.Persistance;
 
@@ -18,6 +18,6 @@ public class userRepository : IUserRepository
 
     public User? GetUserById(Guid id)
     {
-        return _users.SingleOrDefault(u => u.Id == id);
+        return _users.SingleOrDefault(u => u.Id.Value == id);
     }
 }

@@ -29,7 +29,7 @@ public class AuthenticationController : ControllerBase
     
     var authResult = await _mediator.Send(command);
 
-    var response = _mapper.Map<AuthenticationResponse>(authResult);
+    var response = _mapper.Map<AuthenticationResponse>(authResult); // aqui falla
 
     return Ok(response);
   }
