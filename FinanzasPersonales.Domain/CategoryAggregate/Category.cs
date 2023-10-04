@@ -7,11 +7,9 @@ namespace FinanzasPersonales.Domain.Category;
 
 public sealed class Category : AggregateRoot<CategoryId>
 {
-    private readonly List<MovementId> _movementsIds = new();
     public string Name { get; }
     public string Description { get; }
     public UserId UserId { get; }
-    public IReadOnlyCollection<MovementId> Movements => _movementsIds.AsReadOnly();
     
     private Category(
         CategoryId categoryId,
@@ -39,8 +37,4 @@ public sealed class Category : AggregateRoot<CategoryId>
         );
     }
     
-    public void AddMovement(MovementId movementId)
-    {
-        _movementsIds.Add(movementId);
-    }
 }

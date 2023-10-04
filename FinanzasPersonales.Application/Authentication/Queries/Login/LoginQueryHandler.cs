@@ -1,3 +1,4 @@
+using BCrypt.Net;
 using FinanzasPersonales.Application.Authentication.Common;
 using FinanzasPersonales.Application.Common.Interface.Authentication;
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
@@ -26,7 +27,8 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, AuthenticationResul
         }
         // Validar si el password es correcto
 
-        if (user.Password != query.Password)
+        // Validar si la contraseña es correcta utilizando BCrypt.Verify
+        if (!BCrypt.Net.BCrypt.Verify(query.Password, user.Password.Hash))
         {
             throw new Exception("Contraseña incorrecta");
         }

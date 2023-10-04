@@ -2,6 +2,7 @@ using FinanzasPersonales.Application.Authentication.Common;
 using FinanzasPersonales.Application.Common.Interface.Authentication;
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
 using FinanzasPersonales.Domain.User;
+using FinanzasPersonales.Domain.UserAggregate.ValueObjects;
 using MediatR;
 
 namespace FinanzasPersonales.Application.Authentication.Commands.Register;
@@ -30,7 +31,7 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, Authentic
             command.FirstName,
             command.LastName,
             command.Email,
-            command.Password
+            Password.Create(command.Password)
         );
 
         _userRepository.Add(user);
