@@ -50,5 +50,4 @@ public sealed class Account : AggregateRoot<AccountId>
     {
         _movementsIds.Add(movementId);
     }
-    
 }
