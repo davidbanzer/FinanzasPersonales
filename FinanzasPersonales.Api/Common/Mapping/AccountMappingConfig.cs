@@ -16,7 +16,6 @@ public class AccountMappingConfig : IRegister
         config.NewConfig<Account, AccountResponse>()
             .Map(dest => dest.Id, src => src.Id.Value)
             .Map(dest => dest.InitialBalance, src => src.InitialBalance.Value)
-            .Map(dest => dest.UserId, src => src.UserId.Value)
-            .Map(dest => dest.MovementsIds, src => src.MovementsIds.Select(movementId => movementId.Value));
+            .Map(dest => dest.UserId, src => src.UserId.Value);
     }
 }

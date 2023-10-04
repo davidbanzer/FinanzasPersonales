@@ -8,11 +8,11 @@ namespace FinanzasPersonales.Domain.Account;
 
 public sealed class Account : AggregateRoot<AccountId>
 {
-    private readonly List<MovementId> _movementsIds = new();
+/*     private readonly List<MovementId> _movementsIds = new(); */
     public string Name { get; }
     public string Description { get; }
     public Amount InitialBalance { get; }
-    public IReadOnlyCollection<MovementId> MovementsIds => _movementsIds.AsReadOnly();
+/*     public IReadOnlyCollection<MovementId> MovementsIds => _movementsIds.AsReadOnly(); */
     public UserId UserId { get; }
 
     private Account(
@@ -46,8 +46,8 @@ public sealed class Account : AggregateRoot<AccountId>
         );
     }
 
-    public void AddMovement(MovementId movementId)
+/*     public void AddMovement(MovementId movementId)
     {
         _movementsIds.Add(movementId);
-    }
+    } */
 }

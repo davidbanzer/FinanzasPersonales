@@ -5,6 +5,5 @@ public record AccountResponse(
     string Name,
     string Description,
     decimal InitialBalance,
-    List<Guid> MovementsIds,
     Guid UserId
 );
