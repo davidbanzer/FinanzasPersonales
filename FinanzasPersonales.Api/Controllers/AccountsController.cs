@@ -26,15 +26,21 @@ public class AccountsController : ControllerBase
         return Ok(Array.Empty<string>());
     }
 
+    [HttpGet("list/{userId}")]
+    public IActionResult ListAccountsByUserId(Guid userId)
+    {
+        return Ok(Array.Empty<string>());
+    }
+
     [HttpPost("{userId}")]
-    public async Task<IActionResult> CreateAccountAsync(CreateAccountRequest request, string userId)
+    public async Task<IActionResult> CreateAccount(CreateAccountRequest request, Guid userId)
     {
         var command = _mapper.Map<CreateAccountCommand>((request, userId));
 
         var createAccountResult = await _mediator.Send(command);
 
         var response = _mapper.Map<AccountResponse>(createAccountResult);
-        
+
         return Ok(response);
     }
 }
