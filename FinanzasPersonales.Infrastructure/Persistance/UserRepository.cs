@@ -3,7 +3,7 @@ using FinanzasPersonales.Domain.User;
 
 namespace FinanzasPersonales.Infrastructure.Persistance;
 
-public class userRepository : IUserRepository
+public class UserRepository : IUserRepository
 {
     private static readonly List<User> _users = new();
     public void Add(User user)

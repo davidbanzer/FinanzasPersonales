@@ -12,7 +12,7 @@ public sealed class Account : AggregateRoot<AccountId>
     public string Name { get; }
     public string Description { get; }
     public Amount InitialBalance { get; }
-    public IReadOnlyCollection<MovementId> Movements => _movementsIds.AsReadOnly();
+    public IReadOnlyCollection<MovementId> MovementsIds => _movementsIds.AsReadOnly();
     public UserId UserId { get; }
 
     private Account(

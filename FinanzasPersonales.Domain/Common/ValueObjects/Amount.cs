@@ -4,9 +4,9 @@ namespace FinanzasPersonales.Domain.Common.ValueObjects;
 
 public sealed class Amount : ValueObject
 {
-    public double Value { get; }
+    public decimal Value { get; }
 
-    private Amount(double value)
+    private Amount(decimal value)
     {
         if (value < 0)
         {
@@ -16,7 +16,7 @@ public sealed class Amount : ValueObject
         Value = value;
     }
 
-    public static Amount Create(double value)
+    public static Amount Create(decimal value)
     {
         return new Amount(value);
     }

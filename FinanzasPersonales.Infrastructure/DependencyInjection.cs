@@ -22,10 +22,10 @@ public static class DependencyInjection
     this IServiceCollection services,
     ConfigurationManager configuration)
   {
-    services.AddAuth(configuration);
+    services.AddAuth(configuration)
+            .AddPersistance();
     services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
-    services.AddScoped<IUserRepository, userRepository>();
-
+    
     return services;
   }
   public static IServiceCollection AddAuth(this IServiceCollection services, IConfiguration configuration)
@@ -51,6 +51,14 @@ public static class DependencyInjection
         };
       });
       
+    return services;
+  }
+
+  public static IServiceCollection AddPersistance(this IServiceCollection services)
+  {
+    services.AddSingleton<IAccountRepository, AccountRepository>();
+    services.AddSingleton<IUserRepository, UserRepository>();
+
     return services;
   }
 }
