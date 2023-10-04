@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FinanzasPersonales.Api.Controllers;
 
 [ApiController]
-[Route("account")]
+[Route("accounts")]
 [Authorize]
 public class AccountsController : ControllerBase
 {

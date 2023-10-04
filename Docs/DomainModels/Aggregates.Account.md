@@ -26,10 +26,6 @@ class Account {
         {"value": "6B29FC40-CA47-1067-B31D-00DD010662DA"}, 
         {"value": "6B29FC40-CA47-1067-B31D-00DD010662DA"}
     ],
-/*     "transactionsId": [
-        {"value": "6B29FC40-CA47-1067-B31D-00DD010662DA"}, 
-        {"value": "6B29FC40-CA47-1067-B31D-00DD010662DA"}
-    ], */
     "userId": {"value": "6B29FC40-CA47-1067-B31D-00DD010662DA"},
 }
 ```
