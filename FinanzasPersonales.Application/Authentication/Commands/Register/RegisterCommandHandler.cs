@@ -27,11 +27,12 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, Authentic
             throw new Exception("El usuario ya existe");
         }
         // Crear el usuario (generar id unico) e insertar en la db
+        var hashedPassword = Password.Create(command.Password);
         var user = User.Create(
             command.FirstName,
             command.LastName,
             command.Email,
-            Password.Create(command.Password)
+            hashedPassword
         );
 
         _userRepository.Add(user);

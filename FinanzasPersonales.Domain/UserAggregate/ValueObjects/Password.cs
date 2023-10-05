@@ -30,6 +30,10 @@ public sealed class Password : ValueObject
             return new Password(hash);
         }
 
+        public static Password CreateWithoutHash(string plainTextPassword)
+        {
+            return new Password(plainTextPassword);
+        }
         public bool VerifyPassword(string plainTextPassword)
         {
             // Verifica si la contraseña ingresada coincide con el hash almacenado

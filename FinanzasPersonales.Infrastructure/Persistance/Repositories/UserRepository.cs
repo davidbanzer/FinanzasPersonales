@@ -5,19 +5,26 @@ namespace FinanzasPersonales.Infrastructure.Persistance;
 
 public class UserRepository : IUserRepository
 {
-    private static readonly List<User> _users = new();
+    private readonly FinanzasPersonalesDbContext _dbContext;
+
+    public UserRepository(FinanzasPersonalesDbContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
+
     public void Add(User user)
     {
-        _users.Add(user);
+        _dbContext.Add(user);
+        _dbContext.SaveChanges();
     }
 
     public User? GetUserByEmail(string email)
     {
-        return _users.SingleOrDefault(u => u.Email == email);
+        return _dbContext.Users.SingleOrDefault(u => u.Email == email);
     }
 
     public User? GetUserById(Guid id)
     {
-        return _users.SingleOrDefault(u => u.Id.Value == id);
+        return _dbContext.Users.SingleOrDefault(u => u.Id.Value == id);
     }
 }
