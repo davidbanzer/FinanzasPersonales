@@ -8,13 +8,13 @@ namespace FinanzasPersonales.Domain.Transaction;
 
 public sealed class Transaction : AggregateRoot<TransactionId>
 {
-    public string Description { get; }
-    public Amount Amount { get; }
-    public AccountId OriginAccountId { get; }
-    public AccountId DestinationAccountId { get; }
-    public MovementId OriginMovementId { get; }
-    public MovementId DestinationMovementId { get; }
-    public DateTime CreatedDate { get; }
+    public string Description { get; private set; }
+    public Amount Amount { get; private set; }
+    public AccountId OriginAccountId { get; private set; }
+    public AccountId DestinationAccountId { get; private set; }
+    public MovementId OriginMovementId { get; private set; }
+    public MovementId DestinationMovementId { get; private set; }
+    public DateTime CreatedDate { get; private set; }
 
     private Transaction(
         TransactionId transactionId,
@@ -58,4 +58,10 @@ public sealed class Transaction : AggregateRoot<TransactionId>
             createdDate
         );
     }
+
+#pragma warning disable CS8618
+    private Transaction()
+    {
+    }
+#pragma warning restore CS8618
 }

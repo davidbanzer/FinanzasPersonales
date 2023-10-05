@@ -7,10 +7,10 @@ namespace FinanzasPersonales.Domain.Account;
 
 public sealed class Account : AggregateRoot<AccountId>
 {
-    public string Name { get; }
-    public string Description { get; }
-    public Amount InitialBalance { get; }
-    public UserId UserId { get; }
+    public string Name { get; private set; }
+    public string Description { get; private set; }
+    public Amount InitialBalance { get; private set; }
+    public UserId UserId { get; private set; }
 
     private Account(
         AccountId accountId,
@@ -42,5 +42,11 @@ public sealed class Account : AggregateRoot<AccountId>
             userId
         );
     }
+
+#pragma warning disable CS8618
+    private Account()
+    {
+    }
+#pragma warning restore CS8618
 
 }

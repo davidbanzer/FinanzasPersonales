@@ -7,10 +7,10 @@ namespace FinanzasPersonales.Domain.Category;
 
 public sealed class Category : AggregateRoot<CategoryId>
 {
-    public string Name { get; }
-    public string Description { get; }
-    public UserId UserId { get; }
-    
+    public string Name { get; private set; }
+    public string Description { get; private set; }
+    public UserId UserId { get; private set; }
+
     private Category(
         CategoryId categoryId,
         string name,
@@ -36,5 +36,11 @@ public sealed class Category : AggregateRoot<CategoryId>
             userId
         );
     }
-    
+
+#pragma warning disable CS8618
+    private Category()
+    {
+    }
+#pragma warning restore CS8618
+
 }

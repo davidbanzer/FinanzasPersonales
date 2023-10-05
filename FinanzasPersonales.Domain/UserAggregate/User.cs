@@ -6,10 +6,10 @@ namespace FinanzasPersonales.Domain.User;
 
 public sealed class User : AggregateRoot<UserId>
 {
-    public string FirstName { get; }
-    public string LastName { get; }
-    public string Email { get; }
-    public Password Password { get; }
+    public string FirstName { get; private set; }
+    public string LastName { get; private set; }
+    public string Email { get; private set; }
+    public Password Password { get; private set; }
 
     private User(
         UserId userId,
@@ -41,5 +41,11 @@ public sealed class User : AggregateRoot<UserId>
             password
         );
     }
+
+#pragma warning disable CS8618
+    private User()
+    {
+    }
+#pragma warning restore CS8618
 
 }

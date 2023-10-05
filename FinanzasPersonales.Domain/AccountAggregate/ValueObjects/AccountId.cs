@@ -16,6 +16,11 @@ public sealed class AccountId : ValueObject
         return new(Guid.NewGuid());
     }
 
+    public static AccountId Create(Guid value)
+    {
+        return new(value);
+    }
+
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

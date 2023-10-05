@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Options;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace FinanzasPersonales.Infrastructure;
@@ -56,8 +57,10 @@ public static class DependencyInjection
 
   public static IServiceCollection AddPersistance(this IServiceCollection services)
   {
-    services.AddSingleton<IAccountRepository, AccountRepository>();
-    services.AddSingleton<IUserRepository, UserRepository>();
+    services.AddDbContext<FinanzasPersonalesDbContext>(options =>
+        options.UseMySql("Server=localhost;Database=finanzas_personales;Uid=root;Pwd=root;", new MySqlServerVersion(new Version(8, 0, 30))));
+    services.AddScoped<IAccountRepository, AccountRepository>();
+    services.AddScoped<IUserRepository, UserRepository>();
 
     return services;
   }

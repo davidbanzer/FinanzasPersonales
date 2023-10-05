@@ -8,13 +8,13 @@ namespace FinanzasPersonales.Domain.Movement;
 
 public sealed class Movement : AggregateRoot<MovementId>
 {
-    public string Description { get;  }
-    public Amount Amount { get; }
-    public string Type { get; }
-    public AccountId AccountId { get; }
+    public string Description { get; private set;  }
+    public Amount Amount { get; private set; }
+    public string Type { get; private set; }
+    public AccountId AccountId { get; private set; }
 
-    public CategoryId CategoryId { get; }
-    public DateTime CreatedDate { get; }
+    public CategoryId CategoryId { get; private set; }
+    public DateTime CreatedDate { get; private set; }
 
     private Movement(
         MovementId movementId,
@@ -53,5 +53,9 @@ public sealed class Movement : AggregateRoot<MovementId>
         );
     }
     
-
+#pragma warning disable CS8618
+    private Movement()
+    {
+    }
+#pragma warning restore CS8618
 }
