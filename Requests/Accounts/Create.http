@@ -1,12 +1,12 @@
 @host=http://localhost:5192
 @token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODdkZjk4OC00MTI0LTQ4ZTAtOTk1OC0wY2QyZDUwOTZiYTgiLCJnaXZlbl9uYW1lIjoiRGF2aWQiLCJmYW1pbHlfbmFtZSI6IkJhbnplciIsImp0aSI6IjUxNzI2NzNjLWFjZTAtNGNmNi04NmNkLWU0NzY4M2RiZmQ2MSIsImV4cCI6MTY5NzM0NTM4OCwiaXNzIjoiRmluYW56YXNQZXJzb25hbGVzIiwiYXVkIjoiRmluYW56YXNQZXJzb25hbGVzIn0.PH-qi1wMpFebZTix6mF3fgjymLIS64YQu4HF5yYv3hk
-@userId=887df988-4124-48e0-9958-0cd2d5096ba8
+@userId=a716ba5d-78fe-4d1d-9e3f-14234eb26749
 POST {{host}}/accounts/{{userId}}
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-    "name": "Cuenta prueba",
-    "description": "Cuenta de prueba",
+    "name": "Cuenta prueba 2",
+    "description": "Cuenta de prueba 2",
     "initialBalance": 1000
 }
