@@ -25,6 +25,8 @@ public class UserRepository : IUserRepository
 
     public User? GetUserById(Guid id)
     {
-        return _dbContext.Users.SingleOrDefault(u => u.Id.Value == id);
+        return _dbContext.Users
+        .AsEnumerable() // Cargar todos los registros en memoria
+        .SingleOrDefault(u => u.Id.Value == id);
     }
 }

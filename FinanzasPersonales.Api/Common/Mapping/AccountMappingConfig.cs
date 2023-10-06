@@ -17,5 +17,6 @@ public class AccountMappingConfig : IRegister
             .Map(dest => dest.Id, src => src.Id.Value)
             .Map(dest => dest.InitialBalance, src => src.InitialBalance.Value)
             .Map(dest => dest.UserId, src => src.UserId.Value);
+
     }
 }
