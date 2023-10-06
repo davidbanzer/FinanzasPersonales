@@ -15,11 +15,11 @@ public class AuthenticationMappingConfig : IRegister
         config.NewConfig<RegisterRequest, RegisterCommand>();
         config.NewConfig<LoginRequest, LoginQuery>();
         config.NewConfig<AuthenticationResult, AuthenticationResponse>()
-        .Map(dest => dest.Token, src => src.Token)
-        .Map(dest => dest.Id, src => src.User.Id.Value)
-        .Map(dest => dest.FirstName, src => src.User.FirstName)
-        .Map(dest => dest.LastName, src => src.User.LastName)
-        .Map(dest => dest.Email, src => src.User.Email);
+            .Map(dest => dest.Token, src => src.Token)
+            .Map(dest => dest.Id, src => src.User.Id.Value)
+            .Map(dest => dest.FirstName, src => src.User.FirstName)
+            .Map(dest => dest.LastName, src => src.User.LastName)
+            .Map(dest => dest.Email, src => src.User.Email);
 
         config.NewConfig<User, UserResponse>()
             .Map(dest => dest.Id, src => src.Id.Value)
@@ -28,6 +28,6 @@ public class AuthenticationMappingConfig : IRegister
             .Map(dest => dest.Email, src => src.Email);
 
         config.NewConfig<Guid, GetUserByIdQuery>()
-        .Map(dest => dest.UserId, src => src);
+            .Map(dest => dest.UserId, src => src);
     }
 }

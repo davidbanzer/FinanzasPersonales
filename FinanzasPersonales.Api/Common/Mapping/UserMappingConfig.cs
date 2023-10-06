@@ -1,7 +1,4 @@
-using FinanzasPersonales.Application.Authentication.Commands.Register;
-using FinanzasPersonales.Application.Authentication.Common;
 using FinanzasPersonales.Application.Authentication.Queries.GetUserById;
-using FinanzasPersonales.Application.Authentication.Queries.Login;
 using FinanzasPersonales.Contracts.Authentication;
 using FinanzasPersonales.Domain.User;
 using Mapster;
@@ -20,6 +17,6 @@ public class UserMappingConfig : IRegister
             .Map(dest => dest.Email, src => src.Email);
 
         config.NewConfig<Guid, GetUserByIdQuery>()
-        .Map(dest => dest.UserId, src => src);
+            .Map(dest => dest.UserId, src => src);
     }
 }

@@ -1,4 +1,5 @@
 using FinanzasPersonales.Application.Accounts.Commands.CreateAccount;
+using FinanzasPersonales.Application.Accounts.Queries.GetAccountsByUserId;
 using FinanzasPersonales.Contracts.Accounts;
 using MapsterMapper;
 using MediatR;
@@ -20,16 +21,16 @@ public class AccountsController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("list")]
-    public IActionResult ListAccounts()
-    {
-        return Ok(Array.Empty<string>());
-    }
-
     [HttpGet("list/{userId}")]
-    public IActionResult ListAccountsByUserId(Guid userId)
+    public async Task<IActionResult> ListAccountsByUserId(Guid userId)
     {
-        return Ok(Array.Empty<string>());
+        var query = _mapper.Map<GetAccountsByUserIdQuery>(userId);
+
+        var accountsResult = await _mediator.Send(query);
+
+        var response = _mapper.Map<List<AccountResponse>>(accountsResult);
+
+        return Ok(response);
     }
 
     [HttpPost("{userId}")]

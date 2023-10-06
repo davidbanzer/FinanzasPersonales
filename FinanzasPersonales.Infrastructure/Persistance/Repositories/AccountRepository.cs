@@ -18,4 +18,12 @@ public class AccountRepository : IAccountRepository
         _dbContext.Add(account);
         _dbContext.SaveChanges();
     }
+
+    public List<Account>? GetAccountsByUserId(Guid userId)
+    {
+        return _dbContext.Accounts
+        .AsEnumerable() // Cargar todos los registros en memoria
+        .Where(a => a.UserId.Value == userId)
+        .ToList();
+    }
 }
