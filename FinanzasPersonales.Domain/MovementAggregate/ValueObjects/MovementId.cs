@@ -1,6 +1,6 @@
 using FinanzasPersonales.Domain.Common.Models;
 
-namespace FinanzasPersonales.Domain.Movement.ValueObjects;
+namespace FinanzasPersonales.Domain.MovemenAggregate.ValueObjects;
 
 public sealed class MovementId : ValueObject
 {

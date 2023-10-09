@@ -1,9 +1,8 @@
-using FinanzasPersonales.Domain.Category.ValueObjects;
+using FinanzasPersonales.Domain.CategoryAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.Models;
-using FinanzasPersonales.Domain.Movement.ValueObjects;
 using FinanzasPersonales.Domain.UserAggregate.ValueObjects;
 
-namespace FinanzasPersonales.Domain.Category;
+namespace FinanzasPersonales.Domain.CategoryAggregate;
 
 public sealed class Category : AggregateRoot<CategoryId>
 {

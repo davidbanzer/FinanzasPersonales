@@ -1,10 +1,10 @@
 using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
-using FinanzasPersonales.Domain.Category.ValueObjects;
+using FinanzasPersonales.Domain.CategoryAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.Models;
 using FinanzasPersonales.Domain.Common.ValueObjects;
-using FinanzasPersonales.Domain.Movement.ValueObjects;
+using FinanzasPersonales.Domain.MovemenAggregate.ValueObjects;
 
-namespace FinanzasPersonales.Domain.Movement;
+namespace FinanzasPersonales.Domain.MovemenAggregate;
 
 public sealed class Movement : AggregateRoot<MovementId>
 {

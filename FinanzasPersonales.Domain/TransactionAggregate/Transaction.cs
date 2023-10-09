@@ -1,10 +1,10 @@
 using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.Models;
 using FinanzasPersonales.Domain.Common.ValueObjects;
-using FinanzasPersonales.Domain.Movement.ValueObjects;
-using FinanzasPersonales.Domain.Transaction.ValueObjects;
+using FinanzasPersonales.Domain.MovemenAggregate.ValueObjects;
+using FinanzasPersonales.Domain.TransactionAggregate.ValueObjects;
 
-namespace FinanzasPersonales.Domain.Transaction;
+namespace FinanzasPersonales.Domain.TransactionAggregate;
 
 public sealed class Transaction : AggregateRoot<TransactionId>
 {

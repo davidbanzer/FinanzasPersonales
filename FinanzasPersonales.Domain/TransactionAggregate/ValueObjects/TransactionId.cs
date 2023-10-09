@@ -1,6 +1,6 @@
 using FinanzasPersonales.Domain.Common.Models;
 
-namespace FinanzasPersonales.Domain.Transaction.ValueObjects;
+namespace FinanzasPersonales.Domain.TransactionAggregate.ValueObjects;
 
 public sealed class TransactionId : ValueObject
 {

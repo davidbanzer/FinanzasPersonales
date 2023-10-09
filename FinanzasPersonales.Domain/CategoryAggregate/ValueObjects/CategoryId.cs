@@ -1,6 +1,6 @@
 using FinanzasPersonales.Domain.Common.Models;
 
-namespace FinanzasPersonales.Domain.Category.ValueObjects;
+namespace FinanzasPersonales.Domain.CategoryAggregate.ValueObjects;
 
 public sealed class CategoryId : ValueObject
 {
