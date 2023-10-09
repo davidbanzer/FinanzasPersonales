@@ -1,5 +1,5 @@
-using FinanzasPersonales.Domain.User;
 using FinanzasPersonales.Domain.User.ValueObjects;
+using FinanzasPersonales.Domain.UserAggregate;
 using FinanzasPersonales.Domain.UserAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

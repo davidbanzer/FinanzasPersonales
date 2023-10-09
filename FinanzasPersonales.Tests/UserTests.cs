@@ -1,5 +1,5 @@
-using FinanzasPersonales.Domain.User;
-using FinanzasPersonales.Domain.User.ValueObjects;
+
+using FinanzasPersonales.Domain.UserAggregate;
 using FinanzasPersonales.Domain.UserAggregate.ValueObjects;
 
 namespace FinanzasPersonales.Tests;

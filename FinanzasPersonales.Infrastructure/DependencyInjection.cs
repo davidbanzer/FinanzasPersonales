@@ -58,7 +58,7 @@ public static class DependencyInjection
   public static IServiceCollection AddPersistance(this IServiceCollection services)
   {
     services.AddDbContext<FinanzasPersonalesDbContext>(options =>
-        options.UseMySql("Server=localhost;Database=finanzas_personales;User Id=root;", new MySqlServerVersion(new Version(8, 0, 30))));
+        options.UseMySql("Server=localhost;Database=finanzas_personales;User Id=root;Password=root", new MySqlServerVersion(new Version(8, 0, 30))));
     services.AddScoped<IAccountRepository, AccountRepository>();
     services.AddScoped<IUserRepository, UserRepository>();
 

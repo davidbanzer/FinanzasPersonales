@@ -2,7 +2,7 @@ using FinanzasPersonales.Domain.Common.Models;
 using FinanzasPersonales.Domain.User.ValueObjects;
 using FinanzasPersonales.Domain.UserAggregate.ValueObjects;
 
-namespace FinanzasPersonales.Domain.User;
+namespace FinanzasPersonales.Domain.UserAggregate;
 
 public sealed class User : AggregateRoot<UserId>
 {

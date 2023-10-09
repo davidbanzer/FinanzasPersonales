@@ -1,5 +1,5 @@
 using FinanzasPersonales.Domain.Account;
-using FinanzasPersonales.Domain.User;
+using FinanzasPersonales.Domain.UserAggregate;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinanzasPersonales.Infrastructure.Persistance;

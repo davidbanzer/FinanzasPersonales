@@ -1,6 +1,6 @@
 using FinanzasPersonales.Application.Authentication.Queries.GetUserById;
 using FinanzasPersonales.Contracts.Authentication;
-using FinanzasPersonales.Domain.User;
+using FinanzasPersonales.Domain.UserAggregate;
 using Mapster;
 
 namespace FinanzasPersonales.Api.Common.Mapping;

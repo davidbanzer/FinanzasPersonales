@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using FinanzasPersonales.Application.Common.Interface.Authentication;
 using FinanzasPersonales.Application.Common.Interfaces.Services;
-using FinanzasPersonales.Domain.User;
+using FinanzasPersonales.Domain.UserAggregate;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 

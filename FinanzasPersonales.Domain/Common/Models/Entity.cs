@@ -3,12 +3,15 @@ namespace FinanzasPersonales.Domain.Common.Models;
 public abstract class Entity<TId> : IEquatable<Entity<TId>>
   where TId : notnull
 {
+  private readonly List<IDomainEvent> _domainEvents = new();
   public TId Id { get; protected set; }
 
   protected Entity(TId id)
   {
     Id = id;
   }
+
+  public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
   public override bool Equals(object? obj)
   {

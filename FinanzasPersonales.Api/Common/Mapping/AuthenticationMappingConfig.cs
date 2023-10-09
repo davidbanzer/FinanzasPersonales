@@ -3,7 +3,7 @@ using FinanzasPersonales.Application.Authentication.Common;
 using FinanzasPersonales.Application.Authentication.Queries.GetUserById;
 using FinanzasPersonales.Application.Authentication.Queries.Login;
 using FinanzasPersonales.Contracts.Authentication;
-using FinanzasPersonales.Domain.User;
+using FinanzasPersonales.Domain.UserAggregate;
 using Mapster;
 
 namespace FinanzasPersonales.Api.Common.Mapping;

@@ -1,7 +1,7 @@
 using FinanzasPersonales.Application.Authentication.Common;
 using FinanzasPersonales.Application.Common.Interface.Authentication;
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
-using FinanzasPersonales.Domain.User;
+using FinanzasPersonales.Domain.UserAggregate;
 using FinanzasPersonales.Domain.UserAggregate.ValueObjects;
 using MediatR;
 

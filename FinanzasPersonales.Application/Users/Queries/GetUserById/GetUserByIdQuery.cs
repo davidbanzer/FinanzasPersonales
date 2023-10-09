@@ -1,4 +1,4 @@
-using FinanzasPersonales.Domain.User;
+using FinanzasPersonales.Domain.UserAggregate;
 using MediatR;
 
 namespace FinanzasPersonales.Application.Authentication.Queries.GetUserById;
