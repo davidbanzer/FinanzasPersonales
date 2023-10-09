@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Options;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using FinanzasPersonales.Infrastructure.Persistance.Interceptors;
 
 
 namespace FinanzasPersonales.Infrastructure;
@@ -59,6 +60,7 @@ public static class DependencyInjection
   {
     services.AddDbContext<FinanzasPersonalesDbContext>(options =>
         options.UseMySql("Server=localhost;Database=finanzas_personales;User Id=root;Password=root", new MySqlServerVersion(new Version(8, 0, 30))));
+    services.AddScoped<PublishDomainEventsInterceptor>();
     services.AddScoped<IAccountRepository, AccountRepository>();
     services.AddScoped<IUserRepository, UserRepository>();
 

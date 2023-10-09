@@ -1,4 +1,5 @@
 using FinanzasPersonales.Domain.Common.Models;
+using FinanzasPersonales.Domain.UserAggregate.Events;
 using FinanzasPersonales.Domain.UserAggregate.ValueObjects;
 
 namespace FinanzasPersonales.Domain.UserAggregate;
@@ -32,13 +33,16 @@ public sealed class User : AggregateRoot<UserId>
         Password password
     )
     {
-        return new(
+        var user = new User(
             UserId.CreateUnique(),
             firstName,
             lastName,
             email,
             password
         );
+
+        user.AddDomainEvent(new UserCreated(user));
+        return user;
     }
 
 #pragma warning disable CS8618

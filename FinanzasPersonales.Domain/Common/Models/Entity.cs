@@ -1,6 +1,6 @@
 namespace FinanzasPersonales.Domain.Common.Models;
 
-public abstract class Entity<TId> : IEquatable<Entity<TId>>
+public abstract class Entity<TId> : IEquatable<Entity<TId>>, IHasDomainEvents
   where TId : notnull
 {
   private readonly List<IDomainEvent> _domainEvents = new();
@@ -38,10 +38,20 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>
     return Id.GetHashCode();
   }
 
-#pragma warning disable CS8618 
+  public void AddDomainEvent(IDomainEvent domainEvent)
+  {
+    _domainEvents.Add(domainEvent);
+  }
+
+  public void ClearDomainEvents()
+  {
+    _domainEvents.Clear();
+  }
+
+#pragma warning disable CS8618
   protected Entity()
   {
   }
 #pragma warning restore CS8618
 
-} 
+}

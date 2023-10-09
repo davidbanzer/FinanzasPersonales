@@ -1,6 +1,8 @@
+using MediatR;
+
 namespace FinanzasPersonales.Domain.Common.Models
 {
-    public interface IDomainEvent
+    public interface IDomainEvent : INotification
     {
         
     }
