@@ -1,3 +1,4 @@
+using FinanzasPersonales.Application.Accounts.Common;
 using FinanzasPersonales.Domain.AccountAggregate;
 using MediatR;
 
@@ -8,4 +9,4 @@ public record CreateAccountCommand(
     string Description,
     decimal InitialBalance,
     Guid UserId
-) : IRequest<Account>;
+) : IRequest<AccountResult>;

@@ -1,7 +1,7 @@
 using FinanzasPersonales.Application.Accounts.Commands.CreateAccount;
+using FinanzasPersonales.Application.Accounts.Common;
 using FinanzasPersonales.Application.Accounts.Queries.GetAccountsByUserId;
 using FinanzasPersonales.Contracts.Accounts;
-using FinanzasPersonales.Domain.AccountAggregate;
 using Mapster;
 
 namespace FinanzasPersonales.Api.Common.Mapping;
@@ -14,16 +14,18 @@ public class AccountMappingConfig : IRegister
             .Map(dest => dest.UserId, src => src.UserId)
             .Map(dest => dest, src => src.Request);
 
-        config.NewConfig<Account, AccountResponse>()
-            .Map(dest => dest.Id, src => src.Id.Value)
-            .Map(dest => dest.InitialBalance, src => src.InitialBalance.Value)
-            .Map(dest => dest.UserId, src => src.UserId.Value);
+        config.NewConfig<AccountResult, AccountResponse>()
+            .Map(dest => dest.Id, src => src.Account.Id.Value)
+            .Map(dest => dest.Name, src => src.Account.Name)
+            .Map(dest => dest.Description, src => src.Account.Description)
+            .Map(dest => dest.InitialBalance, src => src.Account.InitialBalance.Value)
+            .Map(dest => dest.UserId, src => src.Account.UserId.Value);
 
         config.NewConfig<Guid, GetAccountsByUserIdQuery>()
             .Map(dest => dest.UserId, src => src);
 
-        config.NewConfig<List<Account>, List<AccountResponse>>()
-            .Map(dest => dest, src => src);
+        config.NewConfig<List<AccountResult>, List<AccountResponse>>()
+            .Map(dest => dest , src => src);
 
     }
 }

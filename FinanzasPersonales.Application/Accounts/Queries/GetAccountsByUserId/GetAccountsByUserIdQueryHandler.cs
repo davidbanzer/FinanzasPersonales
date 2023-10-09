@@ -1,10 +1,10 @@
+using FinanzasPersonales.Application.Accounts.Common;
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
-using FinanzasPersonales.Domain.AccountAggregate;
 using MediatR;
 
 namespace FinanzasPersonales.Application.Accounts.Queries.GetAccountsByUserId;
 
-public class GetAccountsByUserIdQueryHandler : IRequestHandler<GetAccountsByUserIdQuery, List<Account>>
+public class GetAccountsByUserIdQueryHandler : IRequestHandler<GetAccountsByUserIdQuery, List<AccountResult>>
 {
     private readonly IAccountRepository _accountRepository;
 
@@ -13,18 +13,19 @@ public class GetAccountsByUserIdQueryHandler : IRequestHandler<GetAccountsByUser
         _accountRepository = accountRepository;
     }
 
-    public async Task<List<Account>> Handle(GetAccountsByUserIdQuery request, CancellationToken cancellationToken)
+    public async Task<List<AccountResult>> Handle(GetAccountsByUserIdQuery request, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
         // Obtener cuentas
         var accounts = _accountRepository.GetAccountsByUserId(request.UserId);
         
+        // Retornar cuentas
         if (accounts is null)
         {
-            accounts = new List<Account>();
+            return new List<AccountResult>();
         }
-        
-        // Retornar cuentas
-        return accounts;
+
+        return accounts.Select(account => new AccountResult(account)).ToList();
+
     }
 }

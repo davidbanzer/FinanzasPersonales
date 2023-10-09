@@ -1,3 +1,4 @@
+using FinanzasPersonales.Application.Accounts.Common;
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
 using FinanzasPersonales.Domain.AccountAggregate;
 using FinanzasPersonales.Domain.Common.ValueObjects;
@@ -6,7 +7,7 @@ using MediatR;
 
 namespace FinanzasPersonales.Application.Accounts.Commands.CreateAccount;
 
-public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand, Account>
+public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand, AccountResult>
 {
     private readonly IAccountRepository _accountRepository;
 
@@ -15,7 +16,7 @@ public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand,
         _accountRepository = accountRepository;
     }
 
-    public async Task<Account> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
+    public async Task<AccountResult> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
         // Crear cuenta
@@ -28,6 +29,6 @@ public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand,
         // Persistir
         _accountRepository.Add(account);
         // Retornar cuenta
-        return account;
+        return new AccountResult(account);
     }
 }

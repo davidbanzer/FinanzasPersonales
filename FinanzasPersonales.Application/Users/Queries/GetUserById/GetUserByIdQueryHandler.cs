@@ -1,11 +1,11 @@
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
-using FinanzasPersonales.Domain.UserAggregate;
+using FinanzasPersonales.Application.Users.Common;
 using MediatR;
 
 namespace FinanzasPersonales.Application.Authentication.Queries.GetUserById;
 
 
-public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, User>
+public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserResult>
 {
     private readonly IUserRepository _userRepository;
 
@@ -14,7 +14,7 @@ public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, User>
         _userRepository = userRepository;
     }
 
-    public async Task<User> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
+    public async Task<UserResult> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
         // Obtener usuario
@@ -25,6 +25,6 @@ public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, User>
             throw new Exception("El usuario no existe");
         }
         // Retornar usuario
-        return user;
+        return new UserResult(user);
     }
 }

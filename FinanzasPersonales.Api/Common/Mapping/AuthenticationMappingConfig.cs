@@ -20,14 +20,5 @@ public class AuthenticationMappingConfig : IRegister
             .Map(dest => dest.FirstName, src => src.User.FirstName)
             .Map(dest => dest.LastName, src => src.User.LastName)
             .Map(dest => dest.Email, src => src.User.Email);
-
-        config.NewConfig<User, UserResponse>()
-            .Map(dest => dest.Id, src => src.Id.Value)
-            .Map(dest => dest.FirstName, src => src.FirstName)
-            .Map(dest => dest.LastName, src => src.LastName)
-            .Map(dest => dest.Email, src => src.Email);
-
-        config.NewConfig<Guid, GetUserByIdQuery>()
-            .Map(dest => dest.UserId, src => src);
     }
 }
