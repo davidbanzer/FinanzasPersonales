@@ -1,5 +1,4 @@
 using FinanzasPersonales.Domain.Common.Models;
-using FinanzasPersonales.Domain.User.ValueObjects;
 using FinanzasPersonales.Domain.UserAggregate.ValueObjects;
 
 namespace FinanzasPersonales.Domain.UserAggregate;

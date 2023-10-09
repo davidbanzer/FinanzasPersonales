@@ -1,4 +1,3 @@
-using FinanzasPersonales.Domain.User.ValueObjects;
 using FinanzasPersonales.Domain.UserAggregate;
 using FinanzasPersonales.Domain.UserAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;

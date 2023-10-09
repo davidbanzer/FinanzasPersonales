@@ -1,6 +1,6 @@
 using FinanzasPersonales.Domain.Common.Models;
 
-namespace FinanzasPersonales.Domain.User.ValueObjects;
+namespace FinanzasPersonales.Domain.UserAggregate.ValueObjects;
 
 public sealed class UserId : ValueObject
 {

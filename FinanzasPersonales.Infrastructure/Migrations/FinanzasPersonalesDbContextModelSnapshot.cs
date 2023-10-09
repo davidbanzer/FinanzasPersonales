@@ -45,7 +45,7 @@ namespace FinanzasPersonales.Infrastructure.Migrations
                     b.ToTable("Accounts", (string)null);
                 });
 
-            modelBuilder.Entity("FinanzasPersonales.Domain.User.User", b =>
+            modelBuilder.Entity("FinanzasPersonales.Domain.UserAggregate.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("char(36)");

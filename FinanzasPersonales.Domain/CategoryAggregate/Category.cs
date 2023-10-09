@@ -1,7 +1,7 @@
 using FinanzasPersonales.Domain.Category.ValueObjects;
 using FinanzasPersonales.Domain.Common.Models;
 using FinanzasPersonales.Domain.Movement.ValueObjects;
-using FinanzasPersonales.Domain.User.ValueObjects;
+using FinanzasPersonales.Domain.UserAggregate.ValueObjects;
 
 namespace FinanzasPersonales.Domain.Category;
 

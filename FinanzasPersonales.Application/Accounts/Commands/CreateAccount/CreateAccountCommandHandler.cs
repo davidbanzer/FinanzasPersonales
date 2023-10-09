@@ -1,7 +1,7 @@
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
 using FinanzasPersonales.Domain.Account;
 using FinanzasPersonales.Domain.Common.ValueObjects;
-using FinanzasPersonales.Domain.User.ValueObjects;
+using FinanzasPersonales.Domain.UserAggregate.ValueObjects;
 using MediatR;
 
 namespace FinanzasPersonales.Application.Accounts.Commands.CreateAccount;
