@@ -1,4 +1,4 @@
-using FinanzasPersonales.Domain.Account;
+using FinanzasPersonales.Domain.AccountAggregate;
 
 namespace FinanzasPersonales.Application.Common.Interfaces.Persistance;
 

@@ -1,4 +1,4 @@
-using FinanzasPersonales.Domain.Account;
+using FinanzasPersonales.Domain.AccountAggregate;
 using MediatR;
 
 namespace FinanzasPersonales.Application.Accounts.Queries.GetAccountsByUserId;

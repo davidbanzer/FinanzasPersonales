@@ -22,7 +22,7 @@ namespace FinanzasPersonales.Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "7.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("FinanzasPersonales.Domain.Account.Account", b =>
+            modelBuilder.Entity("FinanzasPersonales.Domain.AccountAggregate.Account", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("char(36)");

@@ -1,7 +1,7 @@
 using FinanzasPersonales.Application.Accounts.Commands.CreateAccount;
 using FinanzasPersonales.Application.Accounts.Queries.GetAccountsByUserId;
 using FinanzasPersonales.Contracts.Accounts;
-using FinanzasPersonales.Domain.Account;
+using FinanzasPersonales.Domain.AccountAggregate;
 using Mapster;
 
 namespace FinanzasPersonales.Api.Common.Mapping;

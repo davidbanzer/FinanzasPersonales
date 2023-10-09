@@ -1,5 +1,5 @@
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
-using FinanzasPersonales.Domain.Account;
+using FinanzasPersonales.Domain.AccountAggregate;
 
 namespace FinanzasPersonales.Infrastructure.Persistance;
 

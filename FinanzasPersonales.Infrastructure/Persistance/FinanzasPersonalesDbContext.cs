@@ -1,4 +1,4 @@
-using FinanzasPersonales.Domain.Account;
+using FinanzasPersonales.Domain.AccountAggregate;
 using FinanzasPersonales.Domain.Common.Models;
 using FinanzasPersonales.Domain.UserAggregate;
 using FinanzasPersonales.Infrastructure.Persistance.Interceptors;

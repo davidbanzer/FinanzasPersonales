@@ -1,9 +1,9 @@
-using FinanzasPersonales.Domain.Account.ValueObjects;
+using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.Models;
 using FinanzasPersonales.Domain.Common.ValueObjects;
 using FinanzasPersonales.Domain.UserAggregate.ValueObjects;
 
-namespace FinanzasPersonales.Domain.Account;
+namespace FinanzasPersonales.Domain.AccountAggregate;
 
 public sealed class Account : AggregateRoot<AccountId>
 {

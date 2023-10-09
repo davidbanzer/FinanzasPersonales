@@ -1,4 +1,4 @@
-using FinanzasPersonales.Domain.Account.ValueObjects;
+using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.Models;
 using FinanzasPersonales.Domain.Common.ValueObjects;
 using FinanzasPersonales.Domain.Movement.ValueObjects;

@@ -1,5 +1,5 @@
-using FinanzasPersonales.Domain.Account;
-using FinanzasPersonales.Domain.Account.ValueObjects;
+using FinanzasPersonales.Domain.AccountAggregate;
+using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.ValueObjects;
 using FinanzasPersonales.Domain.UserAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;

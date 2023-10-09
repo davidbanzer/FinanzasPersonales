@@ -1,5 +1,5 @@
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
-using FinanzasPersonales.Domain.Account;
+using FinanzasPersonales.Domain.AccountAggregate;
 using FinanzasPersonales.Domain.Common.ValueObjects;
 using FinanzasPersonales.Domain.UserAggregate.Events;
 using MediatR;
@@ -19,8 +19,8 @@ public class UserCreatedHandler : INotificationHandler<UserCreated>
     {
         // crear un account por defecto a este usuario
         var account = Account.Create(
-           "Cuenta por defecto",
-           "Probando que se cree una cuenta por defecto",
+           "Cuenta Principal",
+           "Cuenta principal por defecto",
            Amount.Create(0),
            notification.User.Id
        );
