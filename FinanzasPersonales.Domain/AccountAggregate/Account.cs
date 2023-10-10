@@ -46,14 +46,12 @@ public sealed class Account : AggregateRoot<AccountId>
     public void Update(
             string name,
             string description,
-            Amount initialBalance,
-            UserId userId
+            Amount initialBalance
         )
     {
         Name = name;
         Description = description;
         InitialBalance = initialBalance;
-        UserId = userId;
     }
 
 #pragma warning disable CS8618

@@ -1,4 +1,5 @@
 using FinanzasPersonales.Application.Categories.Commands.CreateCategory;
+using FinanzasPersonales.Application.Categories.Commands.UpdateCategory;
 using FinanzasPersonales.Contracts.Categories;
 using MapsterMapper;
 using MediatR;
@@ -29,6 +30,18 @@ public class CategoriesController : ControllerBase
         var createCategoryResult = await _mediator.Send(command);
 
         var response = _mapper.Map<CategoryResponse>(createCategoryResult);
+
+        return Ok(response);
+    }
+
+    [HttpPut("{categoryId}")]
+    public async Task<IActionResult> UpdateCategory(UpdateCategoryRequest request, Guid categoryId)
+    {
+        var command = _mapper.Map<UpdateCategoryCommand>((request, categoryId));
+
+        var updateCategoryResult = await _mediator.Send(command);
+
+        var response = _mapper.Map<CategoryResponse>(updateCategoryResult);
 
         return Ok(response);
     }

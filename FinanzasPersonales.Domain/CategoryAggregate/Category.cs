@@ -36,6 +36,15 @@ public sealed class Category : AggregateRoot<CategoryId>
         );
     }
 
+    public void Update(
+        string name,
+        string description
+    )
+    {
+        Name = name;
+        Description = description;
+    }
+
 #pragma warning disable CS8618
     private Category()
     {

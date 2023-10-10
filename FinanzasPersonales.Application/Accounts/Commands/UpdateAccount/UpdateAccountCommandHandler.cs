@@ -32,8 +32,7 @@ public class UpdateAccountCommandHandler : IRequestHandler<UpdateAccountCommand,
         account.Update(
             request.Name,
             request.Description,
-            Amount.Create(request.InitialBalance),
-            UserId.Create(request.UserId)
+            Amount.Create(request.InitialBalance)
         );
 
         // Guardar los cambios en el contexto

@@ -1,4 +1,5 @@
 using FinanzasPersonales.Application.Categories.Commands.CreateCategory;
+using FinanzasPersonales.Application.Categories.Commands.UpdateCategory;
 using FinanzasPersonales.Application.Categories.Common;
 using FinanzasPersonales.Contracts.Categories;
 using Mapster;
@@ -19,6 +20,12 @@ public class CategoryMappingConfig : IRegister
             .Map(dest => dest.Name, src => src.Category.Name)
             .Map(dest => dest.Description, src => src.Category.Description)
             .Map(dest => dest.UserId, src => src.Category.UserId.Value);
+
+        // Update
+        config.NewConfig<(UpdateCategoryRequest Request, Guid CategoryId), UpdateCategoryCommand>()
+            .Map(dest => dest.Id, src => src.CategoryId)
+            .Map(dest => dest, src => src.Request);
+
 
     }
 }
