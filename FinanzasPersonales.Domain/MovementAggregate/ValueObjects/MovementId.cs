@@ -16,6 +16,11 @@ public sealed class MovementId : ValueObject
         return new(Guid.NewGuid());
     }
 
+    public static MovementId Create(Guid value)
+    {
+        return new MovementId(value);
+    }
+
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

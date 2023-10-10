@@ -21,7 +21,7 @@ public class UpdateAccountCommandHandler : IRequestHandler<UpdateAccountCommand,
     {
         await Task.CompletedTask;
         // Obtener cuenta existente desde la base de datos
-        var account = _accountRepository.GetById(request.Id);
+        var account = _accountRepository.GetAccountById(request.Id);
 
         if (account is null)
         {

@@ -33,7 +33,7 @@ public class AccountRepository : IAccountRepository
         .ToList();
     }
 
-    public Account? GetById(Guid id)
+    public Account? GetAccountById(Guid id)
     {
         return _dbContext.Accounts
         .AsEnumerable() 
