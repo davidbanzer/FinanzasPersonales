@@ -14,6 +14,7 @@ using Microsoft.Extensions.Options;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using FinanzasPersonales.Infrastructure.Persistance.Interceptors;
+using FinanzasPersonales.Infrastructure.Persistance.Repositories;
 
 
 namespace FinanzasPersonales.Infrastructure;
@@ -63,6 +64,7 @@ public static class DependencyInjection
     services.AddScoped<PublishDomainEventsInterceptor>();
     services.AddScoped<IAccountRepository, AccountRepository>();
     services.AddScoped<IUserRepository, UserRepository>();
+    services.AddScoped<ICategoryRepository, CategoryRepository>();
 
     return services;
   }

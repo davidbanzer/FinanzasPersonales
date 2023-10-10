@@ -1,4 +1,5 @@
 using FinanzasPersonales.Domain.AccountAggregate;
+using FinanzasPersonales.Domain.CategoryAggregate;
 using FinanzasPersonales.Domain.Common.Models;
 using FinanzasPersonales.Domain.UserAggregate;
 using FinanzasPersonales.Infrastructure.Persistance.Interceptors;
@@ -16,6 +17,7 @@ public class FinanzasPersonalesDbContext : DbContext
 
     public DbSet<Account> Accounts { get; set; } = null!;
     public DbSet<User> Users { get; set; } = null!;
+    public DbSet<Category> Categories { get; set; } = null!;
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

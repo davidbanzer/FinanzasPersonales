@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using FinanzasPersonales.Contracts.Authentication;
 using MediatR;
 using FinanzasPersonales.Application.Authentication.Commands.Register;
-using FinanzasPersonales.Application.Authentication.Common;
 using FinanzasPersonales.Application.Authentication.Queries.Login;
 using MapsterMapper;
 
@@ -12,8 +11,8 @@ namespace FinanzasPersonales.Api.Controllers;
 [Route("auth")]
 public class AuthenticationController : ControllerBase
 {
-  private readonly ISender _mediator;
-  private readonly IMapper _mapper;
+    private readonly ISender _mediator;
+    private readonly IMapper _mapper;
 
     public AuthenticationController(ISender mediator, IMapper mapper)
     {
@@ -23,25 +22,25 @@ public class AuthenticationController : ControllerBase
 
     [HttpPost("register")]
 
-  public async Task<IActionResult> Register(RegisterRequest request)
-  {
-    var command = _mapper.Map<RegisterCommand>(request);
-    
-    var authResult = await _mediator.Send(command);
+    public async Task<IActionResult> Register(RegisterRequest request)
+    {
+        var command = _mapper.Map<RegisterCommand>(request);
 
-    var response = _mapper.Map<AuthenticationResponse>(authResult);
+        var authResult = await _mediator.Send(command);
 
-    return Ok(response);
-  }
+        var response = _mapper.Map<AuthenticationResponse>(authResult);
 
-  [HttpPost("login")]
-  public async Task<IActionResult> Login(LoginRequest request)
-  {
-    var query = _mapper.Map<LoginQuery>(request);
-    var authResult = await _mediator.Send(query);
+        return Ok(response);
+    }
 
-    var response = _mapper.Map<AuthenticationResponse>(authResult);
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(LoginRequest request)
+    {
+        var query = _mapper.Map<LoginQuery>(request);
+        var authResult = await _mediator.Send(query);
 
-    return Ok(response);
-  }
+        var response = _mapper.Map<AuthenticationResponse>(authResult);
+
+        return Ok(response);
+    }
 }
