@@ -22,7 +22,7 @@ public class CreateMovementCommandHandler : IRequestHandler<CreateMovementComman
     public async Task<MovementResult> Handle(CreateMovementCommand request, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
-        // Si es de tipo ingreso, crear movimiento sin validación
+
         if (request.Type == "Ingreso")
         {
             var movementIncome = Movement.Create(
@@ -39,42 +39,10 @@ public class CreateMovementCommandHandler : IRequestHandler<CreateMovementComman
         }
         else if (request.Type == "Egreso")
         {
-            // Verificar que tenga suficiente saldo, para eso se debe obtener el saldo de la cuenta
-            var account = _accountRepository.GetAccountById(request.AccountId);
-
-            if (account == null)
+            if (_accountRepository.GetBalanceByAccountId(request.AccountId) < request.Amount)
             {
-                throw new Exception("La cuenta no existe");
+                throw new Exception("No hay suficiente dinero en la cuenta para realizar el movimiento");
             }
-
-            // obtener todos los movimientos de esa cuenta y sumarlos o restarlos
-            var movements = _movementRepository.GetMovementsByAccountId(request.AccountId);
-
-            if (movements == null)
-            {
-                throw new Exception("La cuenta no tiene movimientos");
-            }
-
-            decimal total = 0.0m;
-
-            foreach (var movement in movements)
-            {
-                if (movement.Type == "Ingreso")
-                {
-                    total += movement.Amount.Value;
-                }
-                else if (movement.Type == "Egreso")
-                {
-                    total -= movement.Amount.Value;
-                }
-            }
-
-            if (total < request.Amount)
-            {
-                throw new Exception("No tiene suficiente saldo");
-            }
-
-            // Si tiene suficiente saldo, crear movimiento
 
             var movementExpense = Movement.Create(
                 request.Description,
@@ -89,9 +57,8 @@ public class CreateMovementCommandHandler : IRequestHandler<CreateMovementComman
             return new MovementResult(movementExpense);
         }
         else
-        {
+        { 
             throw new Exception("El tipo de movimiento no es válido");
         }
-
     }
 }

@@ -45,4 +45,37 @@ public class AccountRepository : IAccountRepository
         _dbContext.Update(account);
         _dbContext.SaveChanges();
     }
+
+    public decimal GetBalanceByAccountId(Guid accountId)
+    {
+        // Obtener la cuenta, luego obtener todos los movimientos de esa cuenta y sumarlos o restarlos si su type es Ingreso o Egreso
+        var account = _dbContext.Accounts
+        .AsEnumerable()
+        .SingleOrDefault(a => a.Id.Value == accountId);
+
+        var movements = _dbContext.Movements
+        .AsEnumerable()
+        .Where(m => m.AccountId.Value == accountId);
+
+        decimal balance = 0;
+
+        foreach (var movement in movements)
+        {
+            if (movement.Type == "Ingreso")
+            {
+                balance += movement.Amount.Value;
+            }
+            else
+            {
+                balance -= movement.Amount.Value;
+            }
+        }
+
+        return balance;
+    }
+
+    public decimal GetBalanceByUserId(Guid userId)
+    {
+        throw new NotImplementedException();
+    }
 }

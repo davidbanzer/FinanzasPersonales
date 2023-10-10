@@ -5,8 +5,8 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-    "description" : "Movimento de egreso 2",
-    "amount" : 30.00,
+    "description" : "Movimento de egreso 4",
+    "amount" : 60.00,
     "type" : "Egreso",
     "accountId" : "0b2ef343-8ae7-4817-85d3-63e1ac5bc94e",
     "categoryId": "1865af80-fefb-4329-a97c-9c3a64ea66d1"
