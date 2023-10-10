@@ -1,4 +1,5 @@
 using FinanzasPersonales.Application.Accounts.Commands.CreateAccount;
+using FinanzasPersonales.Application.Accounts.Commands.DeleteAccount;
 using FinanzasPersonales.Application.Accounts.Commands.UpdateAccount;
 using FinanzasPersonales.Application.Accounts.Common;
 using FinanzasPersonales.Application.Accounts.Queries.GetAccountsByUserId;
@@ -34,6 +35,10 @@ public class AccountMappingConfig : IRegister
         config.NewConfig<(UpdateAccountRequest Request, Guid AccountId), UpdateAccountCommand>()
             .Map(dest => dest.Id, src => src.AccountId)
             .Map(dest => dest, src => src.Request);
+
+        // Delete
+        config.NewConfig<Guid, DeleteAccountCommand>()
+            .Map(dest => dest.Id, src => src);
 
     }
 }

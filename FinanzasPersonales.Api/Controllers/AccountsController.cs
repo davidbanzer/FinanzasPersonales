@@ -1,4 +1,5 @@
 using FinanzasPersonales.Application.Accounts.Commands.CreateAccount;
+using FinanzasPersonales.Application.Accounts.Commands.DeleteAccount;
 using FinanzasPersonales.Application.Accounts.Commands.UpdateAccount;
 using FinanzasPersonales.Application.Accounts.Queries.GetAccountsByUserId;
 using FinanzasPersonales.Contracts.Accounts;
@@ -56,5 +57,15 @@ public class AccountsController : ControllerBase
         var response = _mapper.Map<AccountResponse>(updateAccountResult);
 
         return Ok(response);
+    }
+
+    [HttpDelete("{accountId}")]
+    public async Task<IActionResult> DeleteAccount(Guid accountId)
+    {
+        var command = _mapper.Map<DeleteAccountCommand>(accountId);
+
+        var deleteAccountResult = await _mediator.Send(command);
+
+        return Ok(deleteAccountResult);
     }
 }
