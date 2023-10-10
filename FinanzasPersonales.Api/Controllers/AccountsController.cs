@@ -23,8 +23,8 @@ public class AccountsController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("list/{userId}")]
-    public async Task<IActionResult> ListAccountsByUserId(Guid userId)
+    [HttpGet("{userId}")]
+    public async Task<IActionResult> GetAccountsByUserId(Guid userId)
     {
         var query = _mapper.Map<GetAccountsByUserIdQuery>(userId);
 

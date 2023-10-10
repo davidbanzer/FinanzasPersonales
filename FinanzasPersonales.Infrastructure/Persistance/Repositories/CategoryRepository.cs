@@ -31,11 +31,12 @@ public class CategoryRepository : ICategoryRepository
         .SingleOrDefault(u => u.Id.Value == id);
     }
 
-    public Category? GetCategoryByUserId(Guid userId)
+    public List<Category>? GetCategoriesByUserId(Guid userId)
     {
         return _dbContext.Categories
-        .AsEnumerable()
-        .SingleOrDefault(u => u.UserId.Value == userId);
+        .AsEnumerable() 
+        .Where(u => u.UserId.Value == userId)
+        .ToList();
     }
 
     public void Update(Category category)

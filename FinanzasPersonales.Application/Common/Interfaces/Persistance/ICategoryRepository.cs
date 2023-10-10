@@ -7,7 +7,7 @@ public interface ICategoryRepository
 {
     void Add(Category cateogry);
     Category? GetCategoryById(Guid id);
-    Category? GetCategoryByUserId(Guid userId);
+    List<Category>? GetCategoriesByUserId(Guid userId);
 
     void Update(Category category);
     void Delete(Category category);
