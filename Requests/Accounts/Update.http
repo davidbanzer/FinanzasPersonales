@@ -1,0 +1,13 @@
+@host=http://localhost:5192
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODdkZjk4OC00MTI0LTQ4ZTAtOTk1OC0wY2QyZDUwOTZiYTgiLCJnaXZlbl9uYW1lIjoiRGF2aWQiLCJmYW1pbHlfbmFtZSI6IkJhbnplciIsImp0aSI6IjUxNzI2NzNjLWFjZTAtNGNmNi04NmNkLWU0NzY4M2RiZmQ2MSIsImV4cCI6MTY5NzM0NTM4OCwiaXNzIjoiRmluYW56YXNQZXJzb25hbGVzIiwiYXVkIjoiRmluYW56YXNQZXJzb25hbGVzIn0.PH-qi1wMpFebZTix6mF3fgjymLIS64YQu4HF5yYv3hk
+@accountId=ff32c3e8-c646-460c-8c80-9218111e5b32
+PUT {{host}}/accounts/{{accountId}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "name": "Cuenta secundaria update",
+    "description": "Cuenta para gastos varios update",
+    "initialBalance": 123.45,
+    "userId": "51897b0e-4dab-4d48-b4f2-167685fef7a8"
+}

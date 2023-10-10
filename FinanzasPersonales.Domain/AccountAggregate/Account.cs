@@ -43,6 +43,19 @@ public sealed class Account : AggregateRoot<AccountId>
         );
     }
 
+    public void Update(
+            string name,
+            string description,
+            Amount initialBalance,
+            UserId userId
+        )
+    {
+        Name = name;
+        Description = description;
+        InitialBalance = initialBalance;
+        UserId = userId;
+    }
+
 #pragma warning disable CS8618
     private Account()
     {

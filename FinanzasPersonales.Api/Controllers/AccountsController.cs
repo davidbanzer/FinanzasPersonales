@@ -1,4 +1,5 @@
 using FinanzasPersonales.Application.Accounts.Commands.CreateAccount;
+using FinanzasPersonales.Application.Accounts.Commands.UpdateAccount;
 using FinanzasPersonales.Application.Accounts.Queries.GetAccountsByUserId;
 using FinanzasPersonales.Contracts.Accounts;
 using MapsterMapper;
@@ -41,6 +42,18 @@ public class AccountsController : ControllerBase
         var createAccountResult = await _mediator.Send(command);
 
         var response = _mapper.Map<AccountResponse>(createAccountResult);
+
+        return Ok(response);
+    }
+
+    [HttpPut("{accountId}")]
+    public async Task<IActionResult> UpdateAccount(UpdateAccountRequest request, Guid accountId)
+    {
+        var command = _mapper.Map<UpdateAccountCommand>((request, accountId));
+
+        var updateAccountResult = await _mediator.Send(command);
+
+        var response = _mapper.Map<AccountResponse>(updateAccountResult);
 
         return Ok(response);
     }
