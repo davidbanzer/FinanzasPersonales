@@ -1,4 +1,5 @@
 using FinanzasPersonales.Application.Categories.Commands.CreateCategory;
+using FinanzasPersonales.Application.Categories.Commands.DeleteCategory;
 using FinanzasPersonales.Application.Categories.Commands.UpdateCategory;
 using FinanzasPersonales.Contracts.Categories;
 using MapsterMapper;
@@ -44,6 +45,16 @@ public class CategoriesController : ControllerBase
         var response = _mapper.Map<CategoryResponse>(updateCategoryResult);
 
         return Ok(response);
+    }
+
+    [HttpDelete("{categoryId}")]
+    public async Task<IActionResult> DeleteCategory(Guid categoryId)
+    {
+        var command = _mapper.Map<DeleteCategoryCommand>(categoryId);
+
+        var deleteCategoryResult = await _mediator.Send(command);
+
+        return Ok(deleteCategoryResult);
     }
 
 }

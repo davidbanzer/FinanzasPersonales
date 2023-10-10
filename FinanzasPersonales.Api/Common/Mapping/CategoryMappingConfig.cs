@@ -1,4 +1,5 @@
 using FinanzasPersonales.Application.Categories.Commands.CreateCategory;
+using FinanzasPersonales.Application.Categories.Commands.DeleteCategory;
 using FinanzasPersonales.Application.Categories.Commands.UpdateCategory;
 using FinanzasPersonales.Application.Categories.Common;
 using FinanzasPersonales.Contracts.Categories;
@@ -26,6 +27,9 @@ public class CategoryMappingConfig : IRegister
             .Map(dest => dest.Id, src => src.CategoryId)
             .Map(dest => dest, src => src.Request);
 
+        // Delete
+        config.NewConfig<Guid, DeleteCategoryCommand>()
+            .Map(dest => dest.Id, src => src);
 
     }
 }
