@@ -24,10 +24,10 @@ public class CategoriesController : ControllerBase
         _mapper = mapper;
     }
 
-    [HttpPost("{userId}")]
-    public async Task<IActionResult> CreateCategory(CreateCategoryRequest request, Guid userId)
+    [HttpPost]
+    public async Task<IActionResult> CreateCategory(CreateCategoryRequest request)
     {
-        var command = _mapper.Map<CreateCategoryCommand>((request, userId));
+        var command = _mapper.Map<CreateCategoryCommand>(request);
 
         var createCategoryResult = await _mediator.Send(command);
 

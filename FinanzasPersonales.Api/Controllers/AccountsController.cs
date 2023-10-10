@@ -35,10 +35,10 @@ public class AccountsController : ControllerBase
         return Ok(response);
     }
 
-    [HttpPost("{userId}")]
-    public async Task<IActionResult> CreateAccount(CreateAccountRequest request, Guid userId)
+    [HttpPost]
+    public async Task<IActionResult> CreateAccount(CreateAccountRequest request)
     {
-        var command = _mapper.Map<CreateAccountCommand>((request, userId));
+        var command = _mapper.Map<CreateAccountCommand>(request);
 
         var createAccountResult = await _mediator.Send(command);
 

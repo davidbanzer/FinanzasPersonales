@@ -14,9 +14,8 @@ public class CategoryMappingConfig : IRegister
     public void Register(TypeAdapterConfig config)
     {
         // Create
-        config.NewConfig<(CreateCategoryRequest Request, Guid UserId), CreateCategoryCommand>()
-            .Map(dest => dest.UserId, src => src.UserId)
-            .Map(dest => dest, src => src.Request);
+        config.NewConfig<CreateCategoryRequest, CreateCategoryCommand>()
+            .Map(dest => dest, src => src);
 
         config.NewConfig<CategoryResult, CategoryResponse>()
             .Map(dest => dest.Id, src => src.Category.Id.Value)

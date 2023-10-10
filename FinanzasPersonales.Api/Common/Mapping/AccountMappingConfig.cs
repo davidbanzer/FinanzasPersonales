@@ -13,9 +13,8 @@ public class AccountMappingConfig : IRegister
     public void Register(TypeAdapterConfig config)
     {
         // Create
-        config.NewConfig<(CreateAccountRequest Request, Guid UserId), CreateAccountCommand>()
-            .Map(dest => dest.UserId, src => src.UserId)
-            .Map(dest => dest, src => src.Request);
+        config.NewConfig<CreateAccountRequest, CreateAccountCommand>()
+            .Map(dest => dest, src => src);
 
         config.NewConfig<AccountResult, AccountResponse>()
             .Map(dest => dest.Id, src => src.Account.Id.Value)
