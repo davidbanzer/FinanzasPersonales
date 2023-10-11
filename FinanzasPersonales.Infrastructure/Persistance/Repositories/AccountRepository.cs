@@ -53,22 +53,17 @@ public class AccountRepository : IAccountRepository
         .AsEnumerable()
         .SingleOrDefault(a => a.Id.Value == accountId);
 
-        if (account == null)
-        {
-            throw new Exception("La cuenta no existe");
-        }
-
         var movements = _dbContext.Movements
         .AsEnumerable()
         .Where(m => m.AccountId.Value == accountId);
 
         if (movements.Count() == 0)
         {
-            return account.InitialBalance.Value;
+            return account!.InitialBalance.Value;
         }
 
         decimal balance = 0;
-        balance += account.InitialBalance.Value;
+        balance += account!.InitialBalance.Value;
 
         foreach (var movement in movements)
         {

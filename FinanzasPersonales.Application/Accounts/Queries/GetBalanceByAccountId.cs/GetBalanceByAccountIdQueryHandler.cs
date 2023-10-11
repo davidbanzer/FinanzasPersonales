@@ -15,7 +15,12 @@ public class GetBalanceByAccountIdQueryHandler : IRequestHandler<GetBalanceByAcc
     public async Task<decimal> Handle(GetBalanceByAccountIdQuery request, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
-
+        
+        if(_accountRepository.GetAccountById(request.AccountId) is null)
+        {
+            throw new Exception("La cuenta no existe");
+        }
+            
         var balance = _accountRepository.GetBalanceByAccountId(request.AccountId);
 
         return balance;
