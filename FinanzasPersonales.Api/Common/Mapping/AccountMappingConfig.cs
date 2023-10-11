@@ -3,6 +3,7 @@ using FinanzasPersonales.Application.Accounts.Commands.DeleteAccount;
 using FinanzasPersonales.Application.Accounts.Commands.UpdateAccount;
 using FinanzasPersonales.Application.Accounts.Common;
 using FinanzasPersonales.Application.Accounts.Queries.GetAccountsByUserId;
+using FinanzasPersonales.Application.Accounts.Queries.GetBalanceByAccountId.cs;
 using FinanzasPersonales.Contracts.Accounts;
 using Mapster;
 
@@ -38,6 +39,10 @@ public class AccountMappingConfig : IRegister
         // Delete
         config.NewConfig<Guid, DeleteAccountCommand>()
             .Map(dest => dest.Id, src => src);
+
+        // Get balance by accountId
+        config.NewConfig<Guid, GetBalanceByAccountIdQuery>()
+            .Map(dest => dest.AccountId, src => src);
 
     }
 }

@@ -2,6 +2,7 @@ using FinanzasPersonales.Application.Accounts.Commands.CreateAccount;
 using FinanzasPersonales.Application.Accounts.Commands.DeleteAccount;
 using FinanzasPersonales.Application.Accounts.Commands.UpdateAccount;
 using FinanzasPersonales.Application.Accounts.Queries.GetAccountsByUserId;
+using FinanzasPersonales.Application.Accounts.Queries.GetBalanceByAccountId.cs;
 using FinanzasPersonales.Contracts.Accounts;
 using MapsterMapper;
 using MediatR;
@@ -67,5 +68,15 @@ public class AccountsController : ControllerBase
         var deleteAccountResult = await _mediator.Send(command);
 
         return Ok(deleteAccountResult);
+    }
+
+    [HttpGet("balance/{accountId}")]
+    public async Task<IActionResult> GetBalanceByAccountId(Guid accountId)
+    {
+        var query = _mapper.Map<GetBalanceByAccountIdQuery>(accountId);
+
+        var balance = await _mediator.Send(query);
+
+        return Ok(balance);
     }
 }
