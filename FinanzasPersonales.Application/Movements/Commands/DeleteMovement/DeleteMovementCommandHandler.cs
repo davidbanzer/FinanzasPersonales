@@ -15,12 +15,17 @@ public class DeleteMovementCommandHandler : IRequestHandler<DeleteMovementComman
     public async Task<Unit> Handle(DeleteMovementCommand request, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
-        
+
         var movement = _movementRepository.GetMovementById(request.Id);
 
         if (movement is null)
         {
             throw new Exception("No existe el movimiento");
+        }
+
+        if(movement.Type == "I")
+        {
+            throw new Exception("No se puede eliminar un ingreso");
         }
 
         _movementRepository.Delete(movement);
