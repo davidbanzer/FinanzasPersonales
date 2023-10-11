@@ -9,7 +9,7 @@ public interface ITransactionRepository
 
     Transaction? GetTransactionById(Guid id);
 
-    List<Transaction>? GetTransactionsByAccountId(Guid accountId);
+    List<Transaction>? GetTransactionsByUserId(Guid userId);
 
     void Update(Transaction transaction);
 

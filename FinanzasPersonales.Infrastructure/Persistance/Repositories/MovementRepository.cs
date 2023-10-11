@@ -39,6 +39,23 @@ public class MovementRepository : IMovementRepository
         .ToList();
     }
 
+    public List<Movement>? GetMovementsByUserId(Guid userId)
+    {
+        // Obtener las cuentas del usuario
+        var accounts = _dbContext.Accounts
+            .AsEnumerable()
+            .Where(a => a.UserId.Value == userId)
+            .ToList();
+
+        // Obtener los movimientos de las cuentas del usuario
+        var movements = _dbContext.Movements
+            .AsEnumerable()
+            .Where(m => accounts.Any(a => a.Id.Value == m.AccountId.Value))
+            .ToList();
+
+        return movements;
+    }
+
     public void Update(Movement movement)
     {
         _dbContext.Movements.Update(movement);

@@ -1,0 +1,13 @@
+@host=http://localhost:5192
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODdkZjk4OC00MTI0LTQ4ZTAtOTk1OC0wY2QyZDUwOTZiYTgiLCJnaXZlbl9uYW1lIjoiRGF2aWQiLCJmYW1pbHlfbmFtZSI6IkJhbnplciIsImp0aSI6IjUxNzI2NzNjLWFjZTAtNGNmNi04NmNkLWU0NzY4M2RiZmQ2MSIsImV4cCI6MTY5NzM0NTM4OCwiaXNzIjoiRmluYW56YXNQZXJzb25hbGVzIiwiYXVkIjoiRmluYW56YXNQZXJzb25hbGVzIn0.PH-qi1wMpFebZTix6mF3fgjymLIS64YQu4HF5yYv3hk
+@movementId=4ee2b06b-d307-4d97-8700-1fa4e49d5f0d
+PUT {{host}}/movements/{{movementId}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "description" : "Movimento de egreso 3 editado",
+    "amount" : 200,
+    "type": "Egreso",
+    "categoryId": "1865af80-fefb-4329-a97c-9c3a64ea66d1"
+}

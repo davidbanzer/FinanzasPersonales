@@ -31,12 +31,27 @@ public class TransactionRepository : ITransactionRepository
         .FirstOrDefault(t => t.Id.Value == id);
     }
 
-    public List<Transaction>? GetTransactionsByAccountId(Guid accountId)
+    public List<Transaction>? GetTransactionsByUserId(Guid userId)
     {
-        return _dbContext.Transactions
-        .AsEnumerable()
-        .Where(t => t.OriginAccountId.Value == accountId || t.DestinationAccountId.Value == accountId)
-        .ToList();
+        // Obtener las cuentas del usuario
+        var accounts = _dbContext.Accounts
+            .AsEnumerable()
+            .Where(a => a.UserId.Value == userId)
+            .ToList();
+
+        // Obtener los movimientos de las cuentas del usuario
+        var movements = _dbContext.Movements
+            .AsEnumerable()
+            .Where(m => accounts.Any(a => a.Id.Value == m.AccountId.Value))
+            .ToList();
+
+        // Obtener las transacciones de los movimientos del usuario
+        var transactions = _dbContext.Transactions
+            .AsEnumerable()
+            .Where(t => movements.Any(m => m.Id.Value == t.OriginMovementId.Value || m.Id.Value == t.DestinationMovementId.Value))
+            .ToList();
+
+        return transactions;
     }
 
     public void Update(Transaction transaction)

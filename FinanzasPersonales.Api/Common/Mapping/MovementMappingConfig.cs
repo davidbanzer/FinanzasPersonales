@@ -1,4 +1,5 @@
 using FinanzasPersonales.Application.Movements.Commands;
+using FinanzasPersonales.Application.Movements.Commands.UpdateMovement;
 using FinanzasPersonales.Application.Movements.Common;
 using FinanzasPersonales.Contracts.Movements;
 using Mapster;
@@ -21,5 +22,10 @@ public class MovementMappingConfig : IRegister
             .Map(dest => dest.AccountId, src => src.Movement.AccountId.Value)
             .Map(dest => dest.CategoryId, src => src.Movement.CategoryId.Value)
             .Map(dest => dest.CreatedDate, src => src.Movement.CreatedDate);
+
+        // Update
+        config.NewConfig<(UpdateMovementRequest Request, Guid Id), UpdateMovementCommand>()
+            .Map(dest => dest.Id, src => src.Id)
+            .Map(dest => dest, src => src.Request);
     }
 }

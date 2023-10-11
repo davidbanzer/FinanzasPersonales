@@ -52,6 +52,19 @@ public sealed class Movement : AggregateRoot<MovementId>
             DateTime.UtcNow
         );
     }
+
+    public void Update(
+        string description,
+        Amount amount,
+        string type,
+        CategoryId categoryId
+    )
+    {
+        Description = description;
+        Amount = amount;
+        Type = type;
+        CategoryId = categoryId;
+    }
     
 #pragma warning disable CS8618
     private Movement()

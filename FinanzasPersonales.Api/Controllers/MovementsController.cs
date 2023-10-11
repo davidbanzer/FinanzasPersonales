@@ -1,4 +1,5 @@
 using FinanzasPersonales.Application.Movements.Commands;
+using FinanzasPersonales.Application.Movements.Commands.UpdateMovement;
 using FinanzasPersonales.Contracts.Movements;
 using MapsterMapper;
 using MediatR;
@@ -30,6 +31,18 @@ public class MovementsController : ControllerBase
         var createMovementResult = await _mediator.Send(command);
 
         var response = _mapper.Map<MovementResponse>(createMovementResult);
+
+        return Ok(response);
+    }
+
+    [HttpPut("{movementId}")]
+    public async Task<IActionResult> UpdateMovement(UpdateMovementRequest request, Guid movementId)
+    {
+        var command = _mapper.Map<UpdateMovementCommand>((request, movementId));
+
+        var updateMovementResult = await _mediator.Send(command);
+
+        var response = _mapper.Map<MovementResponse>(updateMovementResult);
 
         return Ok(response);
     }

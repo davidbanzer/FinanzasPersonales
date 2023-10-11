@@ -10,6 +10,8 @@ public interface IMovementRepository
 
     List<Movement>? GetMovementsByAccountId(Guid accountId);
 
+    List<Movement>? GetMovementsByUserId(Guid userId);
+
     void Update(Movement movement);
 
     void Delete(Movement movement);
