@@ -23,7 +23,7 @@ public class CreateMovementCommandHandler : IRequestHandler<CreateMovementComman
     {
         await Task.CompletedTask;
 
-        if (request.Type == "Ingreso")
+        if (request.Type == "I")
         {
             var movementIncome = Movement.Create(
                 request.Description,
@@ -37,7 +37,7 @@ public class CreateMovementCommandHandler : IRequestHandler<CreateMovementComman
 
             return new MovementResult(movementIncome);
         }
-        else if (request.Type == "Egreso")
+        else if (request.Type == "E")
         {
             if (_accountRepository.GetBalanceByAccountId(request.AccountId) < request.Amount)
             {

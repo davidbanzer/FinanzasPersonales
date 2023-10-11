@@ -1,4 +1,5 @@
 using FinanzasPersonales.Application.Movements.Commands;
+using FinanzasPersonales.Application.Movements.Commands.DeleteMovement;
 using FinanzasPersonales.Application.Movements.Commands.UpdateMovement;
 using FinanzasPersonales.Application.Movements.Common;
 using FinanzasPersonales.Contracts.Movements;
@@ -27,5 +28,9 @@ public class MovementMappingConfig : IRegister
         config.NewConfig<(UpdateMovementRequest Request, Guid Id), UpdateMovementCommand>()
             .Map(dest => dest.Id, src => src.Id)
             .Map(dest => dest, src => src.Request);
+
+        // Delete
+        config.NewConfig<Guid, DeleteMovementCommand>()
+            .Map(dest => dest, src => src);
     }
 }

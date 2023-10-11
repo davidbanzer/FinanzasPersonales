@@ -1,4 +1,5 @@
 using FinanzasPersonales.Application.Movements.Commands;
+using FinanzasPersonales.Application.Movements.Commands.DeleteMovement;
 using FinanzasPersonales.Application.Movements.Commands.UpdateMovement;
 using FinanzasPersonales.Contracts.Movements;
 using MapsterMapper;
@@ -45,5 +46,15 @@ public class MovementsController : ControllerBase
         var response = _mapper.Map<MovementResponse>(updateMovementResult);
 
         return Ok(response);
+    }
+
+    [HttpDelete("{movementId}")]
+    public async Task<IActionResult> DeleteMovement(Guid movementId)
+    {
+        var command = new DeleteMovementCommand(movementId);
+
+        var deleteMovementResult = await _mediator.Send(command);
+
+        return Ok(deleteMovementResult);
     }
 }

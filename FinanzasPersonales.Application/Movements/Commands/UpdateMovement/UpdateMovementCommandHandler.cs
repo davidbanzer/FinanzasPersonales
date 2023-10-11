@@ -39,7 +39,7 @@ public class UpdateMovementCommandHandler : IRequestHandler<UpdateMovementComman
 
 
         // Si el movimiento es de tipo ingreso, se suma al balance de la cuenta
-        if (request.Type == "Ingreso")
+        if (request.Type == "I")
         {
             movement.Update(
                 request.Description,
@@ -53,7 +53,7 @@ public class UpdateMovementCommandHandler : IRequestHandler<UpdateMovementComman
             return new MovementResult(movement);
 
         }
-        else if (request.Type == "Egreso")
+        else if (request.Type == "E")
         {
             movement.Update(
                 request.Description,

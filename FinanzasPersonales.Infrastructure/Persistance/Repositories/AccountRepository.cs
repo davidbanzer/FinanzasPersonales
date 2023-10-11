@@ -67,7 +67,7 @@ public class AccountRepository : IAccountRepository
 
         foreach (var movement in movements)
         {
-            if (movement.Type == "Ingreso")
+            if (movement.Type == "I")
             {
                 balance += movement.Amount.Value;
             }
@@ -104,7 +104,7 @@ public class AccountRepository : IAccountRepository
             var account = accounts.SingleOrDefault(a => a.Id.Value == movement.AccountId.Value);
 
             initialBalance += account!.InitialBalance.Value;
-            if (movement.Type == "Ingreso")
+            if (movement.Type == "I")
             {
                 balance += movement.Amount.Value;
             }
