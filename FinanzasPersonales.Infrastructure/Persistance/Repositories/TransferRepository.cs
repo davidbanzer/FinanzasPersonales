@@ -1,37 +1,37 @@
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
-using FinanzasPersonales.Domain.TransactionAggregate;
+using FinanzasPersonales.Domain.TransferAggregate;
 
 namespace FinanzasPersonales.Infrastructure.Persistance.Repositories;
 
-public class TransactionRepository : ITransactionRepository
+public class TransferRepository : ITransferRepository
 {
     private readonly FinanzasPersonalesDbContext _dbContext;
 
-    public TransactionRepository(FinanzasPersonalesDbContext dbContext)
+    public TransferRepository(FinanzasPersonalesDbContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public void Add(Transaction transaction)
+    public void Add(Transfer Transfer)
     {
-        _dbContext.Transactions.Add(transaction);
+        _dbContext.Transfers.Add(Transfer);
         _dbContext.SaveChanges();
     }
 
-    public void Delete(Transaction transaction)
+    public void Delete(Transfer Transfer)
     {
-        _dbContext.Transactions.Remove(transaction);
+        _dbContext.Transfers.Remove(Transfer);
         _dbContext.SaveChanges();
     }
 
-    public Transaction? GetTransactionById(Guid id)
+    public Transfer? GetTransferById(Guid id)
     {
-        return _dbContext.Transactions
+        return _dbContext.Transfers
         .AsEnumerable()
         .FirstOrDefault(t => t.Id.Value == id);
     }
 
-    public List<Transaction>? GetTransactionsByUserId(Guid userId)
+    public List<Transfer>? GetTransfersByUserId(Guid userId)
     {
         // Obtener las cuentas del usuario
         var accounts = _dbContext.Accounts
@@ -46,17 +46,17 @@ public class TransactionRepository : ITransactionRepository
             .ToList();
 
         // Obtener las transacciones de los movimientos del usuario
-        var transactions = _dbContext.Transactions
+        var Transfers = _dbContext.Transfers
             .AsEnumerable()
             .Where(t => movements.Any(m => m.Id.Value == t.OriginMovementId.Value || m.Id.Value == t.DestinationMovementId.Value))
             .ToList();
 
-        return transactions;
+        return Transfers;
     }
 
-    public void Update(Transaction transaction)
+    public void Update(Transfer Transfer)
     {
-        _dbContext.Transactions.Update(transaction);
+        _dbContext.Transfers.Update(Transfer);
         _dbContext.SaveChanges();
     }
 }

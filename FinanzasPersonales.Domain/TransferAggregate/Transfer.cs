@@ -2,11 +2,11 @@ using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.Models;
 using FinanzasPersonales.Domain.Common.ValueObjects;
 using FinanzasPersonales.Domain.MovemenAggregate.ValueObjects;
-using FinanzasPersonales.Domain.TransactionAggregate.ValueObjects;
+using FinanzasPersonales.Domain.TransferAggregate.ValueObjects;
 
-namespace FinanzasPersonales.Domain.TransactionAggregate;
+namespace FinanzasPersonales.Domain.TransferAggregate;
 
-public sealed class Transaction : AggregateRoot<TransactionId>
+public sealed class Transfer : AggregateRoot<TransferId>
 {
     public string Description { get; private set; }
     public Amount Amount { get; private set; }
@@ -16,8 +16,8 @@ public sealed class Transaction : AggregateRoot<TransactionId>
     public MovementId DestinationMovementId { get; private set; }
     public DateTime CreatedDate { get; private set; }
 
-    private Transaction(
-        TransactionId transactionId,
+    private Transfer(
+        TransferId TransferId,
         string description,
         Amount amount,
         AccountId originAccountId,
@@ -25,9 +25,9 @@ public sealed class Transaction : AggregateRoot<TransactionId>
         MovementId originMovementId,
         MovementId destinationMovementId,
         DateTime createdDate
-    ) : base(transactionId)
+    ) : base(TransferId)
     {
-        Id = transactionId;
+        Id = TransferId;
         Description = description;
         Amount = amount;
         OriginAccountId = originAccountId;
@@ -37,7 +37,7 @@ public sealed class Transaction : AggregateRoot<TransactionId>
         CreatedDate = createdDate;
     }
 
-    public static Transaction Create(
+    public static Transfer Create(
         string description,
         Amount amount,
         AccountId originAccountId,
@@ -48,7 +48,7 @@ public sealed class Transaction : AggregateRoot<TransactionId>
     )
     {
         return new(
-            TransactionId.CreateUnique(),
+            TransferId.CreateUnique(),
             description,
             amount,
             originAccountId,
@@ -60,7 +60,7 @@ public sealed class Transaction : AggregateRoot<TransactionId>
     }
 
 #pragma warning disable CS8618
-    private Transaction()
+    private Transfer()
     {
     }
 #pragma warning restore CS8618

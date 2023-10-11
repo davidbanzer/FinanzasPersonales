@@ -1,17 +1,17 @@
 
-using FinanzasPersonales.Domain.TransactionAggregate;
+using FinanzasPersonales.Domain.TransferAggregate;
 
 namespace FinanzasPersonales.Application.Common.Interfaces.Persistance;
 
-public interface ITransactionRepository
+public interface ITransferRepository
 {
-    void Add(Transaction transaction);
+    void Add(Transfer Transfer);
 
-    Transaction? GetTransactionById(Guid id);
+    Transfer? GetTransferById(Guid id);
 
-    List<Transaction>? GetTransactionsByUserId(Guid userId);
+    List<Transfer>? GetTransfersByUserId(Guid userId);
 
-    void Update(Transaction transaction);
+    void Update(Transfer Transfer);
 
-    void Delete(Transaction transaction);
+    void Delete(Transfer Transfer);
 }

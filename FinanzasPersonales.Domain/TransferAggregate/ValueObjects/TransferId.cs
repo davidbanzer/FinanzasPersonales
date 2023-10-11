@@ -1,22 +1,22 @@
 using FinanzasPersonales.Domain.Common.Models;
 
-namespace FinanzasPersonales.Domain.TransactionAggregate.ValueObjects;
+namespace FinanzasPersonales.Domain.TransferAggregate.ValueObjects;
 
-public sealed class TransactionId : ValueObject
+public sealed class TransferId : ValueObject
 {
     public Guid Value { get; }
 
-    private TransactionId(Guid value)
+    private TransferId(Guid value)
     {
         Value = value;
     }
 
-    public static TransactionId CreateUnique()
+    public static TransferId CreateUnique()
     {
         return new(Guid.NewGuid());
     }
 
-    public static TransactionId Create(Guid value)
+    public static TransferId Create(Guid value)
     {
         return new(value);
     }

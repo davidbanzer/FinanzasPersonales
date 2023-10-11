@@ -1,24 +1,24 @@
 using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.ValueObjects;
 using FinanzasPersonales.Domain.MovemenAggregate.ValueObjects;
-using FinanzasPersonales.Domain.TransactionAggregate;
-using FinanzasPersonales.Domain.TransactionAggregate.ValueObjects;
+using FinanzasPersonales.Domain.TransferAggregate;
+using FinanzasPersonales.Domain.TransferAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FinanzasPersonales.Infrastructure.Persistance.Configurations;
 
-public class TransactionConfigurations : IEntityTypeConfiguration<Transaction>
+public class TransferConfigurations : IEntityTypeConfiguration<Transfer>
 {
-    public void Configure(EntityTypeBuilder<Transaction> builder)
+    public void Configure(EntityTypeBuilder<Transfer> builder)
     {
-        builder.ToTable("Transactions");
+        builder.ToTable("Transfers");
         builder.HasKey(a => a.Id);
         builder.Property(a => a.Id)
             .ValueGeneratedNever()
             .HasConversion(
                 id => id.Value,
-                value => TransactionId.Create(value)
+                value => TransferId.Create(value)
             );
 
         builder.Property(a => a.Description)
