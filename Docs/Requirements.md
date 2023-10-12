@@ -7,7 +7,7 @@
 - saldo por cuenta ✅ (falta endopoint)
 - balance de ingresos y gastos segun el periodo ❌
 - crud cuentas✅
-- crud movimiento ❌
+- crud movimiento ✅
 - crud categorias✅
 - crud transferencias ❌
 - historial de movimientos ❌

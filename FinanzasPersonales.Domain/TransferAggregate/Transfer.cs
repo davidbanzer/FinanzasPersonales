@@ -43,8 +43,7 @@ public sealed class Transfer : AggregateRoot<TransferId>
         AccountId originAccountId,
         AccountId destinationAccountId,
         MovementId originMovementId,
-        MovementId destinationMovementId,
-        DateTime createdDate
+        MovementId destinationMovementId
     )
     {
         return new(
@@ -55,7 +54,7 @@ public sealed class Transfer : AggregateRoot<TransferId>
             destinationAccountId,
             originMovementId,
             destinationMovementId,
-            createdDate
+            DateTime.UtcNow
         );
     }
 
