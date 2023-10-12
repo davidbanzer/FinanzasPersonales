@@ -5,9 +5,9 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-    "description" : "Egresando movimiento.. 1",
-    "amount" : 10.00,
-    "type" : "E",
-    "accountId" : "3089b2a8-1795-49e2-be9e-2a5b573e291d",
-    "categoryId": "46bd51ad-115d-41d2-ba9c-121797e6b1b7"
+    "description" : "Ingreso de 100 pesos",
+    "amount" : 100.00,
+    "type" : "I",
+    "accountId" : "9572d5fe-cdb2-49ae-ac1a-3f54bb0a9cde",
+    "categoryId": "3ad14b47-3104-4992-a8cf-4f7acdffbde0"
 }

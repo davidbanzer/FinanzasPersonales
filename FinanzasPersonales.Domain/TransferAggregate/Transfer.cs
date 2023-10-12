@@ -2,6 +2,7 @@ using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.Models;
 using FinanzasPersonales.Domain.Common.ValueObjects;
 using FinanzasPersonales.Domain.MovemenAggregate.ValueObjects;
+using FinanzasPersonales.Domain.TransferAggregate.Events;
 using FinanzasPersonales.Domain.TransferAggregate.ValueObjects;
 
 namespace FinanzasPersonales.Domain.TransferAggregate;
@@ -46,7 +47,7 @@ public sealed class Transfer : AggregateRoot<TransferId>
         MovementId destinationMovementId
     )
     {
-        return new(
+        var transfer = new Transfer(
             TransferId.CreateUnique(),
             description,
             amount,
@@ -56,6 +57,15 @@ public sealed class Transfer : AggregateRoot<TransferId>
             destinationMovementId,
             DateTime.UtcNow
         );
+
+        transfer.AddDomainEvent(new TransferCreated(transfer));
+        return transfer;
+    }
+
+    public void UpdateMovements(MovementId originMovement, MovementId destinationMovement)
+    {
+        OriginMovementId = originMovement;
+        DestinationMovementId = destinationMovement;
     }
 
 #pragma warning disable CS8618

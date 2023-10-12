@@ -6,9 +6,7 @@ Content-Type: application/json
 
 {
     "description": "Primera transferencia",
-    "amount": 100,
-    "originAccountId": "887df988-4124-48e0-9958-0cd2d5096ba8",
-    "destinationAccountId": "887df988-4124-48e0-9958-0cd2d5096ba8",
-    "originMovementId": "887df988-4124-48e0-9958-0cd2d5096ba8",
-    "destinationMovementId": "887df988-4124-48e0-9958-0cd2d5096ba8"
+    "amount": 90,
+    "originAccountId": "9572d5fe-cdb2-49ae-ac1a-3f54bb0a9cde",
+    "destinationAccountId": "bdd0e52f-df60-4c29-820e-df439f3760fc"
 }

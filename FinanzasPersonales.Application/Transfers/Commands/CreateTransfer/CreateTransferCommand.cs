@@ -7,7 +7,5 @@ public record CreateTransferCommand(
     string Description,
     decimal Amount,
     Guid OriginAccountId,
-    Guid DestinationAccountId,
-    Guid OriginMovementId,
-    Guid DestinationMovementId
+    Guid DestinationAccountId
 ) : IRequest<TransferResult>;

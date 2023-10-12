@@ -10,12 +10,12 @@ namespace FinanzasPersonales.Application.Authentication.Events;
 public class UserCreatedHandler : INotificationHandler<UserCreated>
 {
     private readonly IAccountRepository _accountRepository;
-    private readonly ICategoryRepository categoryRepository;
+    private readonly ICategoryRepository _categoryRepository;
 
     public UserCreatedHandler(IAccountRepository accountRepository, ICategoryRepository categoryRepository)
     {
         _accountRepository = accountRepository;
-        this.categoryRepository = categoryRepository;
+        _categoryRepository = categoryRepository;
     }
 
     public Task Handle(UserCreated notification, CancellationToken cancellationToken)
@@ -46,10 +46,17 @@ public class UserCreatedHandler : INotificationHandler<UserCreated>
           notification.User.Id
         );
 
+        var transferCategory = Category.Create(
+          "Transferencias",
+          "Aquí puedes llevar un seguimiento de tus transferencias entre cuentas.",
+          notification.User.Id
+        );
+
         _accountRepository.Add(account);
-        categoryRepository.Add(category1);
-        categoryRepository.Add(category2);
-        categoryRepository.Add(category3);
+        _categoryRepository.Add(category1);
+        _categoryRepository.Add(category2);
+        _categoryRepository.Add(category3);
+        _categoryRepository.Add(transferCategory);
         
         return Task.CompletedTask;
     }

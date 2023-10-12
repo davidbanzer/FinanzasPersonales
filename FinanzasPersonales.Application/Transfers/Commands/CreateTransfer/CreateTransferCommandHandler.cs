@@ -28,8 +28,8 @@ public class CreateTransferCommandHandler : IRequestHandler<CreateTransferComman
             Amount.Create(request.Amount),
             AccountId.Create(request.OriginAccountId),
             AccountId.Create(request.DestinationAccountId),
-            MovementId.Create(request.OriginMovementId),
-            MovementId.Create(request.DestinationMovementId)
+            MovementId.Create(new Guid()),
+            MovementId.Create(new Guid())
         );
 
         _transferRepository.Add(transfer);

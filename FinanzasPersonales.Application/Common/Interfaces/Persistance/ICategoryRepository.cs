@@ -9,6 +9,8 @@ public interface ICategoryRepository
     Category? GetCategoryById(Guid id);
     List<Category>? GetCategoriesByUserId(Guid userId);
 
+    Category? GetTransferCategoryByUserId(Guid userId);
+    
     void Update(Category category);
     void Delete(Category category);
 }

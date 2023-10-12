@@ -44,4 +44,11 @@ public class CategoryRepository : ICategoryRepository
         _dbContext.Update(category);
         _dbContext.SaveChanges();
     }
+
+    public Category? GetTransferCategoryByUserId(Guid userId)
+    {
+        return _dbContext.Categories
+        .AsEnumerable() 
+        .SingleOrDefault(u => u.UserId.Value == userId && u.Name == "Transferencias");
+    }
 }

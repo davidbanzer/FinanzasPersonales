@@ -7,6 +7,6 @@ Content-Type: application/json
 {
     "name": "Cuenta secundaria 2",
     "description": "Cuenta para gastos varios 2",
-    "initialBalance": 4723,
-    "userId": "51897b0e-4dab-4d48-b4f2-167685fef7a8"
+    "initialBalance": 0,
+    "userId": "8748cff6-f833-4076-af9a-a66b1f0a1f00"
 }
