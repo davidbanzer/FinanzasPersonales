@@ -1,0 +1,10 @@
+@host=http://localhost:5192
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5NjdkN2Y4MS0zNjVmLTRlN2UtYjliOS03ZjBjZWYzYjI0MGMiLCJnaXZlbl9uYW1lIjoiRGF2aWQiLCJmYW1pbHlfbmFtZSI6IkJhbnplciIsImp0aSI6IjBlNmU1NGE5LTY1NTEtNDgxZi04ZTUwLTYxNjYxMjk3ZmI0YSIsImV4cCI6MTY5OTI4NTUyNiwiaXNzIjoiRmluYW56YXNQZXJzb25hbGVzIiwiYXVkIjoiRmluYW56YXNQZXJzb25hbGVzIn0.9UycBLCSAxVHw67rZR9CIosicfYAZlvkYylGO9GRb3I
+@userId=967d7f81-365f-4e7e-b9b9-7f0cef3b240c
+POST {{host}}/movements/all/{{userId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "month": "10/2023"
+}

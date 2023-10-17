@@ -1,7 +1,7 @@
 using FinanzasPersonales.Domain.AccountAggregate;
 using FinanzasPersonales.Domain.CategoryAggregate;
 using FinanzasPersonales.Domain.Common.Models;
-using FinanzasPersonales.Domain.MovemenAggregate;
+using FinanzasPersonales.Domain.MovementAggregate;
 using FinanzasPersonales.Domain.TransferAggregate;
 using FinanzasPersonales.Domain.UserAggregate;
 using FinanzasPersonales.Infrastructure.Persistance.Interceptors;

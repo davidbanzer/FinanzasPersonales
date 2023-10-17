@@ -2,6 +2,7 @@ using FinanzasPersonales.Application.Movements.Commands;
 using FinanzasPersonales.Application.Movements.Commands.DeleteMovement;
 using FinanzasPersonales.Application.Movements.Commands.UpdateMovement;
 using FinanzasPersonales.Application.Movements.Queries;
+using FinanzasPersonales.Application.Movements.Queries.GetMovementsByDate;
 using FinanzasPersonales.Contracts.Movements;
 using MapsterMapper;
 using MediatR;
@@ -70,4 +71,17 @@ public class MovementsController : ControllerBase
 
         return Ok(response);
     }
+
+    [HttpPost("all/{userId}")]
+    public async Task<IActionResult> GetMovementsByDate(GetMovementsByDateRequest request, Guid userId)
+    {
+        var query = _mapper.Map<GetMovementsByDateQuery>((request, userId));
+
+        var movementsResult = await _mediator.Send(query);
+
+        var response = _mapper.Map<IEnumerable<MovementResponse>>(movementsResult);
+
+        return Ok(response);
+    }
+
 }

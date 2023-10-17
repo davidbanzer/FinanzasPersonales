@@ -21,7 +21,7 @@ public class GetMovementsByUserIdQueryHandler : IRequestHandler<GetMovementsByUs
 
         if(movements is null)
         {
-            throw new Exception("No hay movimientos para el usuario");
+            return new List<MovementResult>();
         }
 
         return new List<MovementResult>(movements.Select(m => new MovementResult(m)));

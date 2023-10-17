@@ -1,5 +1,5 @@
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
-using FinanzasPersonales.Domain.MovemenAggregate;
+using FinanzasPersonales.Domain.MovementAggregate;
 
 namespace FinanzasPersonales.Infrastructure.Persistance.Repositories;
 
@@ -37,6 +37,22 @@ public class MovementRepository : IMovementRepository
         .AsEnumerable()
         .Where(m => m.AccountId.Value == accountId)
         .ToList();
+    }
+
+    public List<Movement>? GetMovementsByDate(string month, Guid userId)
+    {
+        var accounts = _dbContext.Accounts
+            .AsEnumerable()
+            .Where(a => a.UserId.Value == userId)
+            .ToList();
+    
+        var movements = _dbContext.Movements
+            .AsEnumerable()
+            .Where(m => accounts.Any(a => a.Id.Value == m.AccountId.Value))
+            .Where(m => m.CreatedDate.ToString("MM/yyyy") == month)
+            .ToList();
+
+        return movements;
     }
 
     public List<Movement>? GetMovementsByUserId(Guid userId)

@@ -1,4 +1,4 @@
-using FinanzasPersonales.Domain.MovemenAggregate;
+using FinanzasPersonales.Domain.MovementAggregate;
 
 namespace FinanzasPersonales.Application.Common.Interfaces.Persistance;
 
@@ -11,6 +11,8 @@ public interface IMovementRepository
     List<Movement>? GetMovementsByAccountId(Guid accountId);
 
     List<Movement>? GetMovementsByUserId(Guid userId);
+
+    List<Movement>? GetMovementsByDate(string month, Guid userId);
 
     void Update(Movement movement);
 

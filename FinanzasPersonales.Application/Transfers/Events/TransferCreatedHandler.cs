@@ -2,7 +2,7 @@ using FinanzasPersonales.Application.Common.Interfaces.Persistance;
 using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
 using FinanzasPersonales.Domain.CategoryAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.ValueObjects;
-using FinanzasPersonales.Domain.MovemenAggregate;
+using FinanzasPersonales.Domain.MovementAggregate;
 using FinanzasPersonales.Domain.TransferAggregate.Events;
 using MediatR;
 

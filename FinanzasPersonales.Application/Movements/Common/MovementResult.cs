@@ -1,4 +1,4 @@
-using FinanzasPersonales.Domain.MovemenAggregate;
+using FinanzasPersonales.Domain.MovementAggregate;
 
 namespace FinanzasPersonales.Application.Movements.Common;
 

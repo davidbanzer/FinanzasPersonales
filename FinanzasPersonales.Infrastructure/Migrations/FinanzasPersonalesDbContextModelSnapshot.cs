@@ -68,7 +68,7 @@ namespace FinanzasPersonales.Infrastructure.Migrations
                     b.ToTable("Categories", (string)null);
                 });
 
-            modelBuilder.Entity("FinanzasPersonales.Domain.MovemenAggregate.Movement", b =>
+            modelBuilder.Entity("FinanzasPersonales.Domain.MovementAggregate.Movement", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("char(36)");

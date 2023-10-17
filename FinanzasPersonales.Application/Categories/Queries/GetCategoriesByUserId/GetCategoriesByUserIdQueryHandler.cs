@@ -23,7 +23,7 @@ public class GetCategoriesByUserIdQueryHandler : IRequestHandler<GetCategoriesBy
 
         if (categories is null)
         {
-            throw new Exception("No existen categorias");
+            return new List<CategoryResult>();
         }
 
         // Retornar

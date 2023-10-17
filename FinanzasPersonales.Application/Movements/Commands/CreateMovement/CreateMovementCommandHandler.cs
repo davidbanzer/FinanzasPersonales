@@ -3,7 +3,7 @@ using FinanzasPersonales.Application.Movements.Common;
 using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
 using FinanzasPersonales.Domain.CategoryAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.ValueObjects;
-using FinanzasPersonales.Domain.MovemenAggregate;
+using FinanzasPersonales.Domain.MovementAggregate;
 using MediatR;
 
 namespace FinanzasPersonales.Application.Movements.Commands;

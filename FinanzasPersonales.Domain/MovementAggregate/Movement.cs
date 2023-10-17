@@ -2,9 +2,9 @@ using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
 using FinanzasPersonales.Domain.CategoryAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.Models;
 using FinanzasPersonales.Domain.Common.ValueObjects;
-using FinanzasPersonales.Domain.MovemenAggregate.ValueObjects;
+using FinanzasPersonales.Domain.MovementAggregate.ValueObjects;
 
-namespace FinanzasPersonales.Domain.MovemenAggregate;
+namespace FinanzasPersonales.Domain.MovementAggregate;
 
 public sealed class Movement : AggregateRoot<MovementId>
 {

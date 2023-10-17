@@ -1,7 +1,7 @@
 using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.Models;
 using FinanzasPersonales.Domain.Common.ValueObjects;
-using FinanzasPersonales.Domain.MovemenAggregate.ValueObjects;
+using FinanzasPersonales.Domain.MovementAggregate.ValueObjects;
 using FinanzasPersonales.Domain.TransferAggregate.Events;
 using FinanzasPersonales.Domain.TransferAggregate.ValueObjects;
 
