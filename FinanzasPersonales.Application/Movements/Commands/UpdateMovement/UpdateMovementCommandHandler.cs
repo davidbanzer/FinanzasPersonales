@@ -27,8 +27,6 @@ public class UpdateMovementCommandHandler : IRequestHandler<UpdateMovementComman
         {
             throw new Exception("El movimiento no existe");
         }
-        var movementBeforeUpdate = movement;
-
 
         var account = _accountRepository.GetAccountById(movement.AccountId.Value);
 
@@ -38,55 +36,16 @@ public class UpdateMovementCommandHandler : IRequestHandler<UpdateMovementComman
         }
 
 
-        // Si el movimiento es de tipo ingreso, se suma al balance de la cuenta
-        if (request.Type == "I")
-        {
-            movement.Update(
-                request.Description,
-                Amount.Create(request.Amount),
-                request.Type,
-                CategoryId.Create(request.CategoryId)
-            );
+        movement.Update(
+            request.Description,
+            Amount.Create(request.Amount),
+            request.Type,
+            CategoryId.Create(request.CategoryId)
+        );
 
-            _movementRepository.Update(movement);
+        _movementRepository.Update(movement);
 
-            return new MovementResult(movement);
-
-        }
-        else if (request.Type == "E")
-        {
-            movement.Update(
-                request.Description,
-                Amount.Create(request.Amount),
-                request.Type,
-                CategoryId.Create(request.CategoryId)
-            );
-
-            _movementRepository.Update(movement);
-
-            var balance = _accountRepository.GetBalanceByAccountId(account.Id.Value);
-            
-            if (balance < 0)
-            {
-                movement.Update(
-                    movementBeforeUpdate.Description,
-                    movementBeforeUpdate.Amount,
-                    movementBeforeUpdate.Type,
-                    movementBeforeUpdate.CategoryId
-                );
-
-                _movementRepository.Update(movement);
-
-                throw new Exception("El balance de la cuenta no puede ser menor a 0");
-            }
-
-            return new MovementResult(movement);
-
-        }
-        else
-        {
-            throw new Exception("El tipo de movimiento no es válido");
-        }
+        return new MovementResult(movement);
 
     }
 }

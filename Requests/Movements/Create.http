@@ -1,5 +1,5 @@
 @host=http://localhost:5192
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ODdkZjk4OC00MTI0LTQ4ZTAtOTk1OC0wY2QyZDUwOTZiYTgiLCJnaXZlbl9uYW1lIjoiRGF2aWQiLCJmYW1pbHlfbmFtZSI6IkJhbnplciIsImp0aSI6IjUxNzI2NzNjLWFjZTAtNGNmNi04NmNkLWU0NzY4M2RiZmQ2MSIsImV4cCI6MTY5NzM0NTM4OCwiaXNzIjoiRmluYW56YXNQZXJzb25hbGVzIiwiYXVkIjoiRmluYW56YXNQZXJzb25hbGVzIn0.PH-qi1wMpFebZTix6mF3fgjymLIS64YQu4HF5yYv3hk
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5NjdkN2Y4MS0zNjVmLTRlN2UtYjliOS03ZjBjZWYzYjI0MGMiLCJnaXZlbl9uYW1lIjoiRGF2aWQiLCJmYW1pbHlfbmFtZSI6IkJhbnplciIsImp0aSI6IjBlNmU1NGE5LTY1NTEtNDgxZi04ZTUwLTYxNjYxMjk3ZmI0YSIsImV4cCI6MTY5OTI4NTUyNiwiaXNzIjoiRmluYW56YXNQZXJzb25hbGVzIiwiYXVkIjoiRmluYW56YXNQZXJzb25hbGVzIn0.9UycBLCSAxVHw67rZR9CIosicfYAZlvkYylGO9GRb3I
 POST {{host}}/movements
 Authorization: Bearer {{token}}
 Content-Type: application/json
@@ -8,6 +8,6 @@ Content-Type: application/json
     "description" : "Ingreso de 100 pesos",
     "amount" : 100.00,
     "type" : "I",
-    "accountId" : "9572d5fe-cdb2-49ae-ac1a-3f54bb0a9cde",
-    "categoryId": "3ad14b47-3104-4992-a8cf-4f7acdffbde0"
+    "accountId" : "ebdb1792-587f-4152-bf09-2f0d0c22057f",
+    "categoryId": "8a387e73-f12c-491f-a9c0-bf91869eabc7"
 }

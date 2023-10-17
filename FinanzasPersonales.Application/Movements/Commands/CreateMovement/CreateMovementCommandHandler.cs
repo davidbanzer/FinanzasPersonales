@@ -23,42 +23,16 @@ public class CreateMovementCommandHandler : IRequestHandler<CreateMovementComman
     {
         await Task.CompletedTask;
 
-        if (request.Type == "I")
-        {
-            var movementIncome = Movement.Create(
-                request.Description,
-                Amount.Create(request.Amount),
-                request.Type,
-                AccountId.Create(request.AccountId),
-                CategoryId.Create(request.CategoryId)
-            );
+        var movement = Movement.Create(
+            request.Description,
+            Amount.Create(request.Amount),
+            request.Type,
+            AccountId.Create(request.AccountId),
+            CategoryId.Create(request.CategoryId)
+        );
 
-            _movementRepository.Add(movementIncome);
+        _movementRepository.Add(movement);
 
-            return new MovementResult(movementIncome);
-        }
-        else if (request.Type == "E")
-        {
-            if (_accountRepository.GetBalanceByAccountId(request.AccountId) < request.Amount)
-            {
-                throw new Exception("No hay suficiente dinero en la cuenta para realizar el movimiento");
-            }
-
-            var movementExpense = Movement.Create(
-                request.Description,
-                Amount.Create(request.Amount),
-                request.Type,
-                AccountId.Create(request.AccountId),
-                CategoryId.Create(request.CategoryId)
-            );
-
-            _movementRepository.Add(movementExpense);
-
-            return new MovementResult(movementExpense);
-        }
-        else
-        { 
-            throw new Exception("El tipo de movimiento no es válido");
-        }
+        return new MovementResult(movement);
     }
 }

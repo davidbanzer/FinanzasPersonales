@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 // Add CORS policy to allow requests from localhost
-app.UseCors(policy => policy.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader());
+app.UseCors(policy => policy.WithOrigins("http://localhost:8100").AllowAnyMethod().AllowAnyHeader());
 
 {
     //app.UseHttpsRedirection();
