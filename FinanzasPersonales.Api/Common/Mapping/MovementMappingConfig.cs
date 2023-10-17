@@ -2,6 +2,7 @@ using FinanzasPersonales.Application.Movements.Commands;
 using FinanzasPersonales.Application.Movements.Commands.DeleteMovement;
 using FinanzasPersonales.Application.Movements.Commands.UpdateMovement;
 using FinanzasPersonales.Application.Movements.Common;
+using FinanzasPersonales.Application.Movements.Queries;
 using FinanzasPersonales.Contracts.Movements;
 using Mapster;
 
@@ -31,6 +32,10 @@ public class MovementMappingConfig : IRegister
 
         // Delete
         config.NewConfig<Guid, DeleteMovementCommand>()
+            .Map(dest => dest, src => src);
+
+        // GetMovementByUserId
+        config.NewConfig<Guid, GetMovementsByUserIdQuery>()
             .Map(dest => dest, src => src);
     }
 }

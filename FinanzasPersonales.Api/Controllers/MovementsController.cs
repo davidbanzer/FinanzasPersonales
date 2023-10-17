@@ -1,6 +1,7 @@
 using FinanzasPersonales.Application.Movements.Commands;
 using FinanzasPersonales.Application.Movements.Commands.DeleteMovement;
 using FinanzasPersonales.Application.Movements.Commands.UpdateMovement;
+using FinanzasPersonales.Application.Movements.Queries;
 using FinanzasPersonales.Contracts.Movements;
 using MapsterMapper;
 using MediatR;
@@ -56,5 +57,17 @@ public class MovementsController : ControllerBase
         var deleteMovementResult = await _mediator.Send(command);
 
         return Ok(deleteMovementResult);
+    }
+
+    [HttpGet("all/{userId}")]
+    public async Task<IActionResult> GetMovementsByUserId(Guid userId)
+    {
+        var query = new GetMovementsByUserIdQuery(userId);
+        
+        var movementsResult = await _mediator.Send(query);
+
+        var response = _mapper.Map<IEnumerable<MovementResponse>>(movementsResult);
+
+        return Ok(response);
     }
 }
