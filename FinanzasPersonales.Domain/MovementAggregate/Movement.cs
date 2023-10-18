@@ -39,7 +39,8 @@ public sealed class Movement : AggregateRoot<MovementId>
         Amount amount,
         string type,
         AccountId accountId,
-        CategoryId categoryId
+        CategoryId categoryId,
+        DateTime createdDate
     )
     {
         return new(
@@ -49,7 +50,7 @@ public sealed class Movement : AggregateRoot<MovementId>
             type,
             accountId,
             categoryId,
-            DateTime.UtcNow
+            createdDate
         );
     }
 
@@ -57,13 +58,15 @@ public sealed class Movement : AggregateRoot<MovementId>
         string description,
         Amount amount,
         string type,
-        CategoryId categoryId
+        CategoryId categoryId,
+        DateTime createdDate
     )
     {
         Description = description;
         Amount = amount;
         Type = type;
         CategoryId = categoryId;
+        CreatedDate = createdDate;
     }
     
 #pragma warning disable CS8618

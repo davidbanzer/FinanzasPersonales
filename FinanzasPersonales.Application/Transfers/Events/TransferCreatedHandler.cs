@@ -53,7 +53,8 @@ public class TransferCreatedHandler : INotificationHandler<TransferCreated>
             Amount.Create(notification.Transfer.Amount.Value),
             "E",
             AccountId.Create(notification.Transfer.OriginAccountId.Value),
-            CategoryId.Create(category.Id.Value)
+            CategoryId.Create(category.Id.Value),
+            notification.Transfer.CreatedDate
         );
 
         // insertar un movimiento de tipo ingreso en la cuenta de destino
@@ -62,7 +63,8 @@ public class TransferCreatedHandler : INotificationHandler<TransferCreated>
             Amount.Create(notification.Transfer.Amount.Value),
             "I",
             AccountId.Create(notification.Transfer.DestinationAccountId.Value),
-            CategoryId.Create(category.Id.Value)
+            CategoryId.Create(category.Id.Value),
+            notification.Transfer.CreatedDate
         );
 
         _movementRepository.Add(originMovement);

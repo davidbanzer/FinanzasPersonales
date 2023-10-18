@@ -8,5 +8,6 @@ public record CreateMovementCommand(
     decimal Amount,
     string Type,
     Guid AccountId,
-    Guid CategoryId
+    Guid CategoryId,
+    DateTime CreatedDate
 ) : IRequest<MovementResult>;

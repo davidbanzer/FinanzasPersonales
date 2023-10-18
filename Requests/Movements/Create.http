@@ -5,9 +5,10 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-    "description" : "Ingreso de 100 pesos",
-    "amount" : 100.00,
-    "type" : "I",
+    "description" : "Primer egreso",
+    "amount" : 20.00,
+    "type" : "E",
     "accountId" : "ebdb1792-587f-4152-bf09-2f0d0c22057f",
-    "categoryId": "8a387e73-f12c-491f-a9c0-bf91869eabc7"
+    "categoryId": "8a387e73-f12c-491f-a9c0-bf91869eabc7",
+    "createdDate": "2023-10-18T15:30:00.000Z"
 }

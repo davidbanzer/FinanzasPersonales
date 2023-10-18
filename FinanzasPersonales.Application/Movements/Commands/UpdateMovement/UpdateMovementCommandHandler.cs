@@ -40,7 +40,8 @@ public class UpdateMovementCommandHandler : IRequestHandler<UpdateMovementComman
             request.Description,
             Amount.Create(request.Amount),
             request.Type,
-            CategoryId.Create(request.CategoryId)
+            CategoryId.Create(request.CategoryId),
+            request.CreatedDate
         );
 
         _movementRepository.Update(movement);

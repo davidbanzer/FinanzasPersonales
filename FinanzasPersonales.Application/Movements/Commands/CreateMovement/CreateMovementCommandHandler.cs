@@ -28,7 +28,8 @@ public class CreateMovementCommandHandler : IRequestHandler<CreateMovementComman
             Amount.Create(request.Amount),
             request.Type,
             AccountId.Create(request.AccountId),
-            CategoryId.Create(request.CategoryId)
+            CategoryId.Create(request.CategoryId),
+            request.CreatedDate
         );
 
         _movementRepository.Add(movement);
