@@ -1,3 +1,4 @@
+using FinanzasPersonales.Domain.CategoryAggregate.Events;
 using FinanzasPersonales.Domain.CategoryAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.Models;
 using FinanzasPersonales.Domain.UserAggregate.ValueObjects;
@@ -43,6 +44,11 @@ public sealed class Category : AggregateRoot<CategoryId>
     {
         Name = name;
         Description = description;
+    }
+
+    public void Delete(Category category)
+    {
+        category.AddDomainEvent(new CategoryDeleted(category));
     }
 
 #pragma warning disable CS8618

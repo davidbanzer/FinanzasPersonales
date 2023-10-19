@@ -39,6 +39,14 @@ public class MovementRepository : IMovementRepository
         .ToList();
     }
 
+    public List<Movement>? GetMovementsByCategoryId(Guid categoryId)
+    {
+        return _dbContext.Movements
+        .AsEnumerable()
+        .Where(m => m.CategoryId.Value == categoryId)
+        .ToList();
+    }
+
     public List<Movement>? GetMovementsByDate(string month, Guid userId)
     {
         var accounts = _dbContext.Accounts

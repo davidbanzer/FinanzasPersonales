@@ -14,6 +14,8 @@ public interface IMovementRepository
 
     List<Movement>? GetMovementsByDate(string month, Guid userId);
 
+    List<Movement>? GetMovementsByCategoryId(Guid categoryId);
+
     void Update(Movement movement);
 
     void Delete(Movement movement);
