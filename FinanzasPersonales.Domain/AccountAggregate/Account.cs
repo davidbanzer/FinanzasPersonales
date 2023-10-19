@@ -1,3 +1,4 @@
+using FinanzasPersonales.Domain.AccountAggregate.Events;
 using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.Models;
 using FinanzasPersonales.Domain.Common.ValueObjects;
@@ -52,6 +53,11 @@ public sealed class Account : AggregateRoot<AccountId>
         Name = name;
         Description = description;
         InitialBalance = initialBalance;
+    }
+
+    public void Delete(Account account)
+    {
+        account.AddDomainEvent(new AccountDeleted(account));
     }
 
 #pragma warning disable CS8618
