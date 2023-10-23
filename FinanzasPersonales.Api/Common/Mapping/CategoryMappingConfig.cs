@@ -3,6 +3,7 @@ using FinanzasPersonales.Application.Categories.Commands.DeleteCategory;
 using FinanzasPersonales.Application.Categories.Commands.UpdateCategory;
 using FinanzasPersonales.Application.Categories.Common;
 using FinanzasPersonales.Application.Categories.Queries.GetCategoriesByUserId;
+using FinanzasPersonales.Application.Categories.Queries.GetCategoryById;
 using FinanzasPersonales.Contracts.Categories;
 using FinanzasPersonales.Domain.UserAggregate.ValueObjects;
 using Mapster;
@@ -35,6 +36,10 @@ public class CategoryMappingConfig : IRegister
         // GetCategoriesByUserId
         config.NewConfig<Guid, GetCategoriesByUserIdQuery>()
             .Map(dest => dest.UserId, src => src);
+
+        // GetCategoryById
+        config.NewConfig<Guid, GetCategoryByIdQuery>()
+            .Map(dest => dest.Id, src => src);
 
     }
 }

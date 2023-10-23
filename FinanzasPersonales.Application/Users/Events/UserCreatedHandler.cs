@@ -9,55 +9,48 @@ namespace FinanzasPersonales.Application.Authentication.Events;
 
 public class UserCreatedHandler : INotificationHandler<UserCreated>
 {
-    private readonly IAccountRepository _accountRepository;
-    private readonly ICategoryRepository _categoryRepository;
+  private readonly IAccountRepository _accountRepository;
+  private readonly ICategoryRepository _categoryRepository;
 
-    public UserCreatedHandler(IAccountRepository accountRepository, ICategoryRepository categoryRepository)
-    {
-        _accountRepository = accountRepository;
-        _categoryRepository = categoryRepository;
-    }
+  public UserCreatedHandler(IAccountRepository accountRepository, ICategoryRepository categoryRepository)
+  {
+    _accountRepository = accountRepository;
+    _categoryRepository = categoryRepository;
+  }
 
-    public Task Handle(UserCreated notification, CancellationToken cancellationToken)
-    {
-        // crear un account por defecto a este usuario
-        var account = Account.Create(
-           "Cuenta Principal",
-           "Cuenta principal por defecto",
-           Amount.Create(0),
-           notification.User.Id
-       );
+  public Task Handle(UserCreated notification, CancellationToken cancellationToken)
+  {
+    // crear un account por defecto a este usuario
+    var account = Account.Create(
+       "Cuenta Principal",
+       "Cuenta principal por defecto",
+       Amount.Create(0),
+       notification.User.Id
+   );
 
-        var category1 = Category.Create(
-            "Gastos Esenciales",
-            "Incluye los gastos necesarios para tu vida diaria, como vivienda, alimentos y transporte.",
-            notification.User.Id
-          );
+    var category1 = Category.Create(
+        "Alimentación",
+        "Registra los gastos relacionados con la alimentación, como la compra de alimentos, comidas en restaurantes, etc.",
+        notification.User.Id
+      );
 
-        var category2 = Category.Create(
-          "Ahorro e Inversión",
-          "Registra el dinero que estás reservando para tus metas de ahorro y las inversiones que estás haciendo para asegurar tu futuro financiero.",
-          notification.User.Id
-        );
+    var category2 = Category.Create(
+      "Transporte",
+      "Aquí puedes llevar un seguimiento de los gastos relacionados con el transporte, como la compra de combustible, pasajes de autobús, etc.",
+      notification.User.Id
+    );
 
-        var category3 = Category.Create(
-          "Deudas y Obligaciones",
-          "Aquí puedes llevar un seguimiento de tus deudas y los pagos relacionados con préstamos o tarjetas de crédito.",
-          notification.User.Id
-        );
+    var category3 = Category.Create(
+      "Entretenimineto",
+      "Aquí puedes llevar un seguimiento de los gastos relacionados con el entretenimiento, como la compra de entradas al cine, al teatro, etc.",
+      notification.User.Id
+    );
 
-        var transferCategory = Category.Create(
-          "Transferencias",
-          "Aquí puedes llevar un seguimiento de tus transferencias entre cuentas.",
-          notification.User.Id
-        );
+    _accountRepository.Add(account);
+    _categoryRepository.Add(category1);
+    _categoryRepository.Add(category2);
+    _categoryRepository.Add(category3);
 
-        _accountRepository.Add(account);
-        _categoryRepository.Add(category1);
-        _categoryRepository.Add(category2);
-        _categoryRepository.Add(category3);
-        _categoryRepository.Add(transferCategory);
-        
-        return Task.CompletedTask;
-    }
+    return Task.CompletedTask;
+  }
 }

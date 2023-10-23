@@ -2,6 +2,7 @@ using FinanzasPersonales.Application.Categories.Commands.CreateCategory;
 using FinanzasPersonales.Application.Categories.Commands.DeleteCategory;
 using FinanzasPersonales.Application.Categories.Commands.UpdateCategory;
 using FinanzasPersonales.Application.Categories.Queries.GetCategoriesByUserId;
+using FinanzasPersonales.Application.Categories.Queries.GetCategoryById;
 using FinanzasPersonales.Contracts.Categories;
 using MapsterMapper;
 using MediatR;
@@ -58,7 +59,7 @@ public class CategoriesController : ControllerBase
         return Ok(deleteCategoryResult);
     }
 
-    [HttpGet("{userId}")]
+    [HttpGet("all/{userId}")]
     public async Task<IActionResult> GetCategoriesByUserId(Guid userId)
     {
         var query = _mapper.Map<GetCategoriesByUserIdQuery>(userId);
@@ -70,4 +71,15 @@ public class CategoriesController : ControllerBase
         return Ok(response);
     }
 
+    [HttpGet("{categoryId}")]
+    public async Task<IActionResult> GetCategoryById(Guid categoryId)
+    {
+        var query = _mapper.Map<GetCategoryByIdQuery>(categoryId);
+
+        var category = await _mediator.Send(query);
+
+        var response = _mapper.Map<CategoryResponse>(category);
+
+        return Ok(response);
+    }
 }

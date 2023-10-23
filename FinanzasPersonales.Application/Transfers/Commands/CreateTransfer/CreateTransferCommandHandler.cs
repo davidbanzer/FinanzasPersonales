@@ -1,6 +1,7 @@
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
 using FinanzasPersonales.Application.Transfers.Common;
 using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
+using FinanzasPersonales.Domain.CategoryAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.ValueObjects;
 using FinanzasPersonales.Domain.MovementAggregate.ValueObjects;
 using FinanzasPersonales.Domain.TransferAggregate;
@@ -29,7 +30,8 @@ public class CreateTransferCommandHandler : IRequestHandler<CreateTransferComman
             AccountId.Create(request.OriginAccountId),
             AccountId.Create(request.DestinationAccountId),
             MovementId.Create(new Guid()),
-            MovementId.Create(new Guid())
+            MovementId.Create(new Guid()),
+            CategoryId.Create(request.CategoryId)
         );
 
         _transferRepository.Add(transfer);

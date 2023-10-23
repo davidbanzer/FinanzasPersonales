@@ -8,7 +8,7 @@ Content-Type: application/json
     "description" : "Primer egreso",
     "amount" : 20.00,
     "type" : "E",
-    "accountId" : "ebdb1792-587f-4152-bf09-2f0d0c22057f",
-    "categoryId": "8a387e73-f12c-491f-a9c0-bf91869eabc7",
-    "createdDate": "2023-10-18T15:30:00.000Z"
+    "accountId" : "34b659e6-c1b8-4a75-a812-8d369fa7ee8a",
+    "categoryId": "8ba39f06-5552-4667-8571-c84b8a94abf3",
+    "createdDate": "2023-10-19T15:30:00.000Z"
 }

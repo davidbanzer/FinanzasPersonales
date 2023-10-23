@@ -26,21 +26,6 @@ public class TransferCreatedHandler : INotificationHandler<TransferCreated>
 
     public Task Handle(TransferCreated notification, CancellationToken cancellationToken)
     {
-        // obtener UserId de la cuenta de origen
-        var originAccount = _accountRepository.GetAccountById(notification.Transfer.OriginAccountId.Value);
-
-        if (originAccount is null)
-        {
-            throw new Exception("La cuenta de origen no existe");
-        }
-
-        // buscar la categoria de transferencias del usuario
-        var category = _categoryRepository.GetTransferCategoryByUserId(originAccount.UserId.Value);
-
-        if (category is null)
-        {
-            throw new Exception("La categoria de transferencias no existe");
-        }
 
         // verificar si tiene suficiente dinero en la cuenta de origen para hacer la transferencia
         if (_accountRepository.GetBalanceByAccountId(notification.Transfer.OriginAccountId.Value) < notification.Transfer.Amount.Value)
@@ -53,7 +38,7 @@ public class TransferCreatedHandler : INotificationHandler<TransferCreated>
             Amount.Create(notification.Transfer.Amount.Value),
             "E",
             AccountId.Create(notification.Transfer.OriginAccountId.Value),
-            CategoryId.Create(category.Id.Value),
+            CategoryId.Create(notification.CategoryId.Value),
             notification.Transfer.CreatedDate
         );
 
@@ -63,7 +48,7 @@ public class TransferCreatedHandler : INotificationHandler<TransferCreated>
             Amount.Create(notification.Transfer.Amount.Value),
             "I",
             AccountId.Create(notification.Transfer.DestinationAccountId.Value),
-            CategoryId.Create(category.Id.Value),
+            CategoryId.Create(notification.CategoryId.Value),
             notification.Transfer.CreatedDate
         );
 

@@ -1,4 +1,5 @@
 using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
+using FinanzasPersonales.Domain.CategoryAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.Models;
 using FinanzasPersonales.Domain.Common.ValueObjects;
 using FinanzasPersonales.Domain.MovementAggregate.ValueObjects;
@@ -44,7 +45,8 @@ public sealed class Transfer : AggregateRoot<TransferId>
         AccountId originAccountId,
         AccountId destinationAccountId,
         MovementId originMovementId,
-        MovementId destinationMovementId
+        MovementId destinationMovementId,
+        CategoryId categoryId
     )
     {
         var transfer = new Transfer(
@@ -58,7 +60,7 @@ public sealed class Transfer : AggregateRoot<TransferId>
             DateTime.UtcNow
         );
 
-        transfer.AddDomainEvent(new TransferCreated(transfer));
+        transfer.AddDomainEvent(new TransferCreated(transfer, categoryId));
         return transfer;
     }
 
