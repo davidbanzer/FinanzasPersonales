@@ -2,6 +2,7 @@ using FinanzasPersonales.Application.Accounts.Commands.CreateAccount;
 using FinanzasPersonales.Application.Accounts.Commands.DeleteAccount;
 using FinanzasPersonales.Application.Accounts.Commands.UpdateAccount;
 using FinanzasPersonales.Application.Accounts.Common;
+using FinanzasPersonales.Application.Accounts.Queries.GetAccountById;
 using FinanzasPersonales.Application.Accounts.Queries.GetAccountsByUserId;
 using FinanzasPersonales.Application.Accounts.Queries.GetBalanceByAccountId.cs;
 using FinanzasPersonales.Contracts.Accounts;
@@ -27,6 +28,10 @@ public class AccountMappingConfig : IRegister
         // Get By UserId
         config.NewConfig<Guid, GetAccountsByUserIdQuery>()
             .Map(dest => dest.UserId, src => src);
+
+        // Get By Id
+        config.NewConfig<Guid, GetAccountByIdQuery>()
+            .Map(dest => dest.Id, src => src);
 
         config.NewConfig<List<AccountResult>, List<AccountResponse>>()
             .Map(dest => dest , src => src);

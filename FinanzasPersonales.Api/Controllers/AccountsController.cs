@@ -1,6 +1,7 @@
 using FinanzasPersonales.Application.Accounts.Commands.CreateAccount;
 using FinanzasPersonales.Application.Accounts.Commands.DeleteAccount;
 using FinanzasPersonales.Application.Accounts.Commands.UpdateAccount;
+using FinanzasPersonales.Application.Accounts.Queries.GetAccountById;
 using FinanzasPersonales.Application.Accounts.Queries.GetAccountsByUserId;
 using FinanzasPersonales.Application.Accounts.Queries.GetBalanceByAccountId.cs;
 using FinanzasPersonales.Contracts.Accounts;
@@ -24,7 +25,7 @@ public class AccountsController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("{userId}")]
+    [HttpGet("all/{userId}")]
     public async Task<IActionResult> GetAccountsByUserId(Guid userId)
     {
         var query = _mapper.Map<GetAccountsByUserIdQuery>(userId);
@@ -32,6 +33,18 @@ public class AccountsController : ControllerBase
         var accountsResult = await _mediator.Send(query);
 
         var response = _mapper.Map<List<AccountResponse>>(accountsResult);
+
+        return Ok(response);
+    }
+
+    [HttpGet("{accountId}")]
+    public async Task<IActionResult> GetAccountById(Guid accountId)
+    {
+        var query = _mapper.Map<GetAccountByIdQuery>(accountId);
+
+        var accountResult = await _mediator.Send(query);
+
+        var response = _mapper.Map<AccountResponse>(accountResult);
 
         return Ok(response);
     }
