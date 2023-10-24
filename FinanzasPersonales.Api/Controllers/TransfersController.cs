@@ -1,4 +1,5 @@
 using FinanzasPersonales.Application.Transfers.Commands.CreateTransfer;
+using FinanzasPersonales.Application.Transfers.Queries.GetTransferByUserId;
 using FinanzasPersonales.Contracts.Transfers;
 using MapsterMapper;
 using MediatR;
@@ -31,6 +32,18 @@ public class TransfersController : ControllerBase
         var createTransferResult = await _mediator.Send(command);
 
         var response = _mapper.Map<TransferResponse>(createTransferResult);
+
+        return Ok(response);
+    }
+
+    [HttpGet("all/{userId}")]
+    public async Task<IActionResult> GetTransfersByUserId(Guid userId)
+    {
+        var query = _mapper.Map<GetTransfersByUserIdQuery>(userId);
+
+        var getTransfersByUserIdResult = await _mediator.Send(query);
+
+        var response = _mapper.Map<List<TransferResponse>>(getTransfersByUserIdResult);
 
         return Ok(response);
     }

@@ -1,5 +1,6 @@
 using FinanzasPersonales.Application.Transfers.Commands.CreateTransfer;
 using FinanzasPersonales.Application.Transfers.Common;
+using FinanzasPersonales.Application.Transfers.Queries.GetTransferByUserId;
 using FinanzasPersonales.Contracts.Transfers;
 using Mapster;
 
@@ -12,6 +13,10 @@ public class TransferMappingConfig : IRegister
         // Create
         config.NewConfig<CreateTransferRequest, CreateTransferCommand>()
             .Map(dest => dest, src => src);
+
+        // GetByUserId
+        config.NewConfig<Guid, GetTransfersByUserIdQuery>()
+            .Map(dest => dest.UserId, src => src);
 
         config.NewConfig<TransferResult, TransferResponse>()
             .Map(dest => dest.Id, src => src.Transfer.Id.Value)
