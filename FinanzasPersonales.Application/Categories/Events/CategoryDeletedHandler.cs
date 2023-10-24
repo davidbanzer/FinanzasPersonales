@@ -43,6 +43,7 @@ public class CategoryDeletedHandler: INotificationHandler<CategoryDeleted>
                 movement.Amount,
                 movement.Type,
                 defaultCategory.Id,
+                movement.AccountId,
                 movement.CreatedDate
             );
             _movementRepository.Update(movement);

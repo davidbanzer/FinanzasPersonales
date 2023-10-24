@@ -59,6 +59,7 @@ public sealed class Movement : AggregateRoot<MovementId>
         Amount amount,
         string type,
         CategoryId categoryId,
+        AccountId accountId,
         DateTime createdDate
     )
     {
@@ -66,6 +67,7 @@ public sealed class Movement : AggregateRoot<MovementId>
         Amount = amount;
         Type = type;
         CategoryId = categoryId;
+        AccountId = accountId;
         CreatedDate = createdDate;
     }
     

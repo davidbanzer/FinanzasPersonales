@@ -9,5 +9,6 @@ public record UpdateMovementCommand(
     decimal Amount,
     string Type,
     Guid CategoryId,
+    Guid AccountId,
     DateTime CreatedDate
 ) : IRequest<MovementResult>;

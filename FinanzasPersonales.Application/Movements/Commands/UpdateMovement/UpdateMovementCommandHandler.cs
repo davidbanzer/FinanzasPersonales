@@ -1,5 +1,6 @@
 using FinanzasPersonales.Application.Common.Interfaces.Persistance;
 using FinanzasPersonales.Application.Movements.Common;
+using FinanzasPersonales.Domain.AccountAggregate.ValueObjects;
 using FinanzasPersonales.Domain.CategoryAggregate.ValueObjects;
 using FinanzasPersonales.Domain.Common.ValueObjects;
 using MediatR;
@@ -41,6 +42,7 @@ public class UpdateMovementCommandHandler : IRequestHandler<UpdateMovementComman
             Amount.Create(request.Amount),
             request.Type,
             CategoryId.Create(request.CategoryId),
+            AccountId.Create(request.AccountId),
             request.CreatedDate
         );
 

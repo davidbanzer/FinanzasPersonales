@@ -5,5 +5,6 @@ public record UpdateMovementRequest(
     decimal Amount,
     string Type,
     Guid CategoryId,
+    Guid AccountId,
     DateTime CreatedDate
 );

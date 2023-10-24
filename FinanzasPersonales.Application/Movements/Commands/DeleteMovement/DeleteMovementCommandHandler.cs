@@ -23,11 +23,6 @@ public class DeleteMovementCommandHandler : IRequestHandler<DeleteMovementComman
             throw new Exception("No existe el movimiento");
         }
 
-        if(movement.Type == "I")
-        {
-            throw new Exception("No se puede eliminar un ingreso");
-        }
-
         _movementRepository.Delete(movement);
 
         return Unit.Value;
