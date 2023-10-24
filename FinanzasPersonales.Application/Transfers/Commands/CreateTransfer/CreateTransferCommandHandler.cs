@@ -31,7 +31,8 @@ public class CreateTransferCommandHandler : IRequestHandler<CreateTransferComman
             AccountId.Create(request.DestinationAccountId),
             MovementId.Create(new Guid()),
             MovementId.Create(new Guid()),
-            CategoryId.Create(request.CategoryId)
+            CategoryId.Create(request.CategoryId),
+            request.CreatedDate
         );
 
         _transferRepository.Add(transfer);

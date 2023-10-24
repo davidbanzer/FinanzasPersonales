@@ -46,7 +46,8 @@ public sealed class Transfer : AggregateRoot<TransferId>
         AccountId destinationAccountId,
         MovementId originMovementId,
         MovementId destinationMovementId,
-        CategoryId categoryId
+        CategoryId categoryId,
+        DateTime createdDate
     )
     {
         var transfer = new Transfer(
@@ -57,7 +58,7 @@ public sealed class Transfer : AggregateRoot<TransferId>
             destinationAccountId,
             originMovementId,
             destinationMovementId,
-            DateTime.UtcNow
+            createdDate
         );
 
         transfer.AddDomainEvent(new TransferCreated(transfer, categoryId));

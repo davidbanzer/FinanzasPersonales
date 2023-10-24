@@ -5,5 +5,6 @@ public record CreateTransferRequest(
     decimal Amount,
     Guid OriginAccountId,
     Guid DestinationAccountId,
-    Guid CategoryId
+    Guid CategoryId,
+    DateTime CreatedDate
 );
