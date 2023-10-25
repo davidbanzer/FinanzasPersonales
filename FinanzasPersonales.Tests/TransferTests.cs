@@ -43,6 +43,5 @@ public class TransferTests
         Assert.Equal(originMovementId, transfer.OriginMovementId);
         Assert.Equal(destinationMovementId, transfer.DestinationMovementId);
         Assert.Equal(createdDate, transfer.CreatedDate);
-
     }
 }
