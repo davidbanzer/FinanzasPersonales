@@ -31,6 +31,16 @@ public class TransferRepository : ITransferRepository
         .FirstOrDefault(t => t.Id.Value == id);
     }
 
+    public List<Transfer>? GetTransfersByMovementId(Guid movementId)
+    {
+        var transfers = _dbContext.Transfers
+            .AsEnumerable()
+            .Where(t => t.OriginMovementId.Value == movementId || t.DestinationMovementId.Value == movementId)
+            .ToList();
+
+        return transfers;
+    }
+
     public List<Transfer>? GetTransfersByUserId(Guid userId)
     {
         // Obtener las cuentas del usuario

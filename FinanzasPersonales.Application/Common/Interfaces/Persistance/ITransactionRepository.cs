@@ -11,6 +11,8 @@ public interface ITransferRepository
 
     List<Transfer>? GetTransfersByUserId(Guid userId);
 
+    List<Transfer>? GetTransfersByMovementId(Guid movementId);
+
     void Update(Transfer Transfer);
 
     void Delete(Transfer Transfer);
