@@ -10,7 +10,7 @@ public sealed class Amount : ValueObject
     {
         if (value < 0)
         {
-            throw new ArgumentException("La cantidad de dinero debe ser mayor o igual a cero.");
+            throw new Exception("El monto debe ser mayor a 0");
         }
 
         Value = value;
