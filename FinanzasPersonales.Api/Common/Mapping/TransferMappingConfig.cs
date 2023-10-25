@@ -1,4 +1,5 @@
 using FinanzasPersonales.Application.Transfers.Commands.CreateTransfer;
+using FinanzasPersonales.Application.Transfers.Commands.DeleteTransfer;
 using FinanzasPersonales.Application.Transfers.Common;
 using FinanzasPersonales.Application.Transfers.Queries.GetTransferByUserId;
 using FinanzasPersonales.Contracts.Transfers;
@@ -17,6 +18,10 @@ public class TransferMappingConfig : IRegister
         // GetByUserId
         config.NewConfig<Guid, GetTransfersByUserIdQuery>()
             .Map(dest => dest.UserId, src => src);
+
+        // Delete
+        config.NewConfig<Guid, DeleteTransferCommand>()
+            .Map(dest => dest.TransferId, src => src);
 
         config.NewConfig<TransferResult, TransferResponse>()
             .Map(dest => dest.Id, src => src.Transfer.Id.Value)

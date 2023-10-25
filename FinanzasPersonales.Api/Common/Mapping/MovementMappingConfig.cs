@@ -33,11 +33,11 @@ public class MovementMappingConfig : IRegister
 
         // Delete
         config.NewConfig<Guid, DeleteMovementCommand>()
-            .Map(dest => dest, src => src);
+            .Map(dest => dest.Id, src => src);
 
         // GetMovementByUserId
         config.NewConfig<Guid, GetMovementsByUserIdQuery>()
-            .Map(dest => dest, src => src);
+            .Map(dest => dest.UserId, src => src);
 
         // GetMovementsByDate
         config.NewConfig<(GetMovementsByDateRequest Request, Guid UserId), GetMovementsByDateQuery>()

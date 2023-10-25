@@ -53,7 +53,7 @@ public class MovementsController : ControllerBase
     [HttpDelete("{movementId}")]
     public async Task<IActionResult> DeleteMovement(Guid movementId)
     {
-        var command = new DeleteMovementCommand(movementId);
+        var command = _mapper.Map<DeleteMovementCommand>(movementId);
 
         var deleteMovementResult = await _mediator.Send(command);
 
@@ -63,7 +63,7 @@ public class MovementsController : ControllerBase
     [HttpGet("all/{userId}")]
     public async Task<IActionResult> GetMovementsByUserId(Guid userId)
     {
-        var query = new GetMovementsByUserIdQuery(userId);
+        var query = _mapper.Map<GetMovementsByUserIdQuery>(userId);
         
         var movementsResult = await _mediator.Send(query);
 

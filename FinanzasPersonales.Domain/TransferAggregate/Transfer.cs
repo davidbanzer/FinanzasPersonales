@@ -71,6 +71,11 @@ public sealed class Transfer : AggregateRoot<TransferId>
         DestinationMovementId = destinationMovement;
     }
 
+    public void Delete(Transfer transfer)
+    {
+        transfer.AddDomainEvent(new TransferDeleted(transfer));
+    }
+
 #pragma warning disable CS8618
     private Transfer()
     {

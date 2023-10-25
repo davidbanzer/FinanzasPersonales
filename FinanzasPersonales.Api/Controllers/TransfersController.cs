@@ -1,4 +1,5 @@
 using FinanzasPersonales.Application.Transfers.Commands.CreateTransfer;
+using FinanzasPersonales.Application.Transfers.Commands.DeleteTransfer;
 using FinanzasPersonales.Application.Transfers.Queries.GetTransferByUserId;
 using FinanzasPersonales.Contracts.Transfers;
 using MapsterMapper;
@@ -46,5 +47,15 @@ public class TransfersController : ControllerBase
         var response = _mapper.Map<List<TransferResponse>>(getTransfersByUserIdResult);
 
         return Ok(response);
+    }
+
+    [HttpDelete("{transferId}")]
+    public async Task<IActionResult> DeleteTransfer(Guid transferId)
+    {
+        var command = _mapper.Map<DeleteTransferCommand>(transferId);
+
+        var deleteTransferResult = await _mediator.Send(command);
+
+        return Ok(deleteTransferResult);
     }
 }
