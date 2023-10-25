@@ -11,4 +11,4 @@
 - Crud categorias✅
 - Crud transferencias ❌
 - Historial de movimientos ✅
-- historial de transacciones ❌
+- historial de transacciones ✅

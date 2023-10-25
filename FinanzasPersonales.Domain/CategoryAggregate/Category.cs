@@ -46,9 +46,9 @@ public sealed class Category : AggregateRoot<CategoryId>
         Description = description;
     }
 
-    public void Delete(Category category)
+    public void Delete()
     {
-        category.AddDomainEvent(new CategoryDeleted(category));
+        AddDomainEvent(new CategoryDeleted(this));
     }
 
 #pragma warning disable CS8618

@@ -1,5 +1,6 @@
 using FinanzasPersonales.Application.Transfers.Commands.CreateTransfer;
 using FinanzasPersonales.Application.Transfers.Commands.DeleteTransfer;
+using FinanzasPersonales.Application.Transfers.Commands.UpdateTransfer;
 using FinanzasPersonales.Application.Transfers.Queries.GetTransferByUserId;
 using FinanzasPersonales.Contracts.Transfers;
 using MapsterMapper;
@@ -45,6 +46,18 @@ public class TransfersController : ControllerBase
         var getTransfersByUserIdResult = await _mediator.Send(query);
 
         var response = _mapper.Map<List<TransferResponse>>(getTransfersByUserIdResult);
+
+        return Ok(response);
+    }
+
+    [HttpPut("{transferId}")]
+    public async Task<IActionResult> UpdateTransfer(Guid transferId, UpdateTransferRequest request)
+    {
+        var command = _mapper.Map<UpdateTransferCommand>((request, transferId));
+
+        var updateTransferResult = await _mediator.Send(command);
+
+        var response = _mapper.Map<TransferResponse>(updateTransferResult);
 
         return Ok(response);
     }

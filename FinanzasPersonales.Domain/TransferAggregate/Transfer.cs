@@ -71,9 +71,27 @@ public sealed class Transfer : AggregateRoot<TransferId>
         DestinationMovementId = destinationMovement;
     }
 
-    public void Delete(Transfer transfer)
+    public void Update(
+        string description,
+        Amount amount,
+        AccountId originAccountId,
+        AccountId destinationAccountId,
+        CategoryId categoryId,
+        DateTime createdDate
+    )
     {
-        transfer.AddDomainEvent(new TransferDeleted(transfer));
+        Description = description;
+        Amount = amount;
+        OriginAccountId = originAccountId;
+        DestinationAccountId = destinationAccountId;
+        CreatedDate = createdDate;
+
+        AddDomainEvent(new TransferUpdated(this, categoryId));
+    }
+
+    public void Delete()
+    {
+        AddDomainEvent(new TransferDeleted(this));
     }
 
 #pragma warning disable CS8618

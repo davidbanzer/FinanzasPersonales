@@ -55,9 +55,9 @@ public sealed class Account : AggregateRoot<AccountId>
         InitialBalance = initialBalance;
     }
 
-    public void Delete(Account account)
+    public void Delete()
     {
-        account.AddDomainEvent(new AccountDeleted(account));
+        AddDomainEvent(new AccountDeleted(this));
     }
 
 #pragma warning disable CS8618

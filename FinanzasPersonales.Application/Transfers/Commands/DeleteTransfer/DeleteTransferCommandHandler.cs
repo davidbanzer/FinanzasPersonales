@@ -25,7 +25,7 @@ public class DeleteTransferCommandHandler: IRequestHandler<DeleteTransferCommand
         }
 
         // Eliminar la transferencia
-        transfer.Delete(transfer);
+        transfer.Delete();
         _transferRepository.Delete(transfer);
 
         return Unit.Value;

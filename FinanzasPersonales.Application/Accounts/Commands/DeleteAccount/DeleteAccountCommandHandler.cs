@@ -25,7 +25,7 @@ public class DeleteAccountCommandHandler : IRequestHandler<DeleteAccountCommand,
         }
 
         // Eliminar la cuenta
-        account.Delete(account);
+        account.Delete();
         _accountRepository.Delete(account);
 
         // Retornar

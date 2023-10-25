@@ -25,7 +25,7 @@ public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryComman
         }
 
         // Eliminar la categoria
-        category.Delete(category);
+        category.Delete();
         _categoryRepository.Delete(category);
 
         // Retornar
