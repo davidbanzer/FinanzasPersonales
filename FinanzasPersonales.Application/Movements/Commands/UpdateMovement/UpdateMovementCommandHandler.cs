@@ -12,10 +12,13 @@ public class UpdateMovementCommandHandler : IRequestHandler<UpdateMovementComman
     private readonly IMovementRepository _movementRepository;
     private readonly IAccountRepository _accountRepository;
 
-    public UpdateMovementCommandHandler(IMovementRepository movementRepository, IAccountRepository accountRepository)
+    private readonly ITransferRepository _transferRepository;
+
+    public UpdateMovementCommandHandler(IMovementRepository movementRepository, IAccountRepository accountRepository, ITransferRepository transferRepository)
     {
         _movementRepository = movementRepository;
         _accountRepository = accountRepository;
+        _transferRepository = transferRepository;
     }
 
     public async Task<MovementResult> Handle(UpdateMovementCommand request, CancellationToken cancellationToken)
@@ -36,6 +39,10 @@ public class UpdateMovementCommandHandler : IRequestHandler<UpdateMovementComman
             throw new Exception("La cuenta no existe");
         }
 
+        if (_transferRepository.GetTransfersByMovementId(movement.Id.Value) is not null)
+        {
+            throw new Exception("Para editar este movimiento, edite la transferencia asociada");
+        }
 
         movement.Update(
             request.Description,

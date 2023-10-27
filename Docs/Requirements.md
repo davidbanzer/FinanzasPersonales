@@ -9,6 +9,6 @@
 - Crud cuentas✅
 - Crud movimiento ✅
 - Crud categorias✅
-- Crud transferencias ❌
+- Crud transferencias ✅
 - Historial de movimientos ✅
 - historial de transacciones ✅
